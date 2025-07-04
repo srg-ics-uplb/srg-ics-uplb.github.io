@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems Research Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #764ba2;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* People Grid */
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .person-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .person-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .person-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .person-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .person-card .role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Publications */
+        .publication-item {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication-item h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-item .authors {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-item .venue {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Courses */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .course-code {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Resources */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .resource-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* News */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .news-item {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .news-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .news-tag {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #667eea;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* Blog */
+        .blog-post {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-post h3 {
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                margin: 1rem 0;
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Systems Lab</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#people">People</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Systems Research Group</h1>
+            <p>Advancing the frontiers of distributed systems, operating systems, and computer architecture</p>
+            <a href="#about" class="cta-button">Explore Our Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto;">
+                Our research group focuses on building robust, scalable, and efficient computer systems. We work on cutting-edge problems in distributed systems, operating systems, computer architecture, and system security. Our interdisciplinary approach combines theoretical foundations with practical implementations to solve real-world challenges.
+            </p>
+            <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;">🔧</div>
+                    <h3>Systems Engineering</h3>
+                    <p>Building reliable and performant systems</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;">🌐</div>
+                    <h3>Distributed Computing</h3>
+                    <p>Scalable solutions for modern applications</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;">🔒</div>
+                    <h3>Security & Privacy</h3>
+                    <p>Protecting systems and user data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- People Section -->
+    <section id="people" class="section">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="person-avatar">Dr</div>
+                    <h3>Dr. Sarah Chen</h3>
+                    <p class="role">Principal Investigator</p>
+                    <p>Expert in distributed systems and consensus algorithms. PhD from MIT, previously at Google Research.</p>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">Dr</div>
+                    <h3>Dr. Michael Rodriguez</h3>
+                    <p class="role">Associate Professor</p>
+                    <p>Specializes in operating systems and virtualization. Author of "Modern OS Design" textbook.</p>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">Dr</div>
+                    <h3>Dr. Emily Watson</h3>
+                    <p class="role">Assistant Professor</p>
+                    <p>Research focus on system security and privacy-preserving computing architectures.</p>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">A</div>
+                    <h3>Alex Kumar</h3>
+                    <p class="role">PhD Student</p>
+                    <p>Working on Byzantine fault tolerance in blockchain systems and consensus protocols.</p>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">J</div>
+                    <h3>Jessica Liu</h3>
+                    <p class="role">PhD Student</p>
+                    <p>Researching edge computing architectures and real-time systems optimization.</p>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">R</div>
+                    <h3>Robert Kim</h3>
+                    <p class="role">MS Student</p>
+                    <p>Developing high-performance networking protocols for data center applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section">
+        <div class="container">
+            <h2>Recent Publications</h2>
+            <div class="publication-item">
+                <h3>Scalable Consensus in Distributed Systems: A Novel Approach</h3>
+                <p class="authors">S. Chen, A. Kumar, M. Rodriguez</p>
+                <p class="venue">ACM Symposium on Operating Systems Principles (SOSP) 2024</p>
+                <p style="margin-top: 1rem;">A breakthrough consensus algorithm that achieves sub-second finality in networks with thousands of nodes.</p>
+            </div>
+            <div class="publication-item">
+                <h3>Privacy-Preserving Edge Computing with Secure Multiparty Computation</h3>
+                <p class="authors">E. Watson, J. Liu</p>
+                <p class="venue">IEEE Symposium on Security and Privacy 2024</p>
+                <p style="margin-top: 1rem;">Novel techniques for maintaining privacy in distributed edge computing environments.</p>
+            </div>
+            <div class="publication-item">
+                <h3>High-Performance Networking for Modern Data Centers</h3>
+                <p class="authors">R. Kim, S. Chen</p>
+                <p class="venue">USENIX Networked Systems Design and Implementation (NSDI) 2024</p>
+                <p style="margin-top: 1rem;">Optimized networking protocols that reduce latency by 40% in large-scale deployments.</p>
+            </div>
+            <div class="publication-item">
+                <h3>Operating System Design for Heterogeneous Computing</h3>
+                <p class="authors">M. Rodriguez, E. Watson</p>
+                <p class="venue">ACM Transactions on Computer Systems (TOCS) 2024</p>
+                <p style="margin-top: 1rem;">Comprehensive framework for managing diverse computing resources in modern systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="section">
+        <div class="container">
+            <h2>Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="course-code">CS 6410</span>
+                    <h3>Advanced Operating Systems</h3>
+                    <p>Deep dive into modern OS design, including microkernels, virtualization, and container technologies. Hands-on projects with real systems.</p>
+                </div>
+                <div class="course-card">
+                    <span class="course-code">CS 6450</span>
+                    <h3>Distributed Systems</h3>
+                    <p>Comprehensive study of distributed computing, covering consensus, replication, fault tolerance, and large-scale system design.</p>
+                </div>
+                <div class="course-card">
+                    <span class="course-code">CS 6460</span>
+                    <h3>Computer Architecture</h3>
+                    <p>Modern processor design, memory hierarchies, parallelism, and specialized computing architectures including GPUs and FPGAs.</p>
+                </div>
+                <div class="course-card">
+                    <span class="course-code">CS 6470</span>
+                    <h3>System Security</h3>
+                    <p>Security principles for system design, including secure coding, cryptographic protocols, and defense against advanced threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section">
+        <div class="container">
+            <h2>Resources</h2>
+            <div class="resource-grid">
+                <a href="https://scholar.google.com/citations?user=EXAMPLE" target="_blank" class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h3>Research Papers</h3>
+                    <p>Access our complete publication archive and preprints</p>
+                </a>
+                <a href="https://github.com/systems-research-group" target="_blank" class="resource-card">
+                    <div class="resource-icon">💻</div>
+                    <h3>Open Source Projects</h3>
+                    <p>Explore our GitHub repositories and contribute to ongoing projects</p>
+                </a>
+                <a href="https://drive.google.com/drive/folders/course-materials" target="_blank" class="resource-card">
+                    <div class="resource-icon">🎓</div>
+                    <h3>Course Materials</h3>
+                    <p>Lecture notes, assignments, and project specifications</p>
+                </a>
+                <a href="https://hpc.university.edu/systems-lab" target="_blank" class="resource-card">
+                    <div class="resource-icon">🔬</div>
+                    <h3>Lab Equipment</h3>
+                    <p>High-performance computing cluster and specialized hardware</p>
+                </a>
+                <a href="https://datasets.systems-lab.org" target="_blank" class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <h3>Datasets</h3>
+                    <p>Benchmark datasets and performance evaluation tools</p>
+                </a>
+                <a href="https://industry.systems-lab.org/partners" target="_blank" class="resource-card">
+                    <div class="resource-icon">🤝</div>
+                    <h3>Industry Partners</h3>
+                    <p>Collaborations with leading technology companies</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section">
+        <div class="container">
+            <h2>Latest News</h2>
+            <div class="news-grid">
+                <div class="news-item">
+                    <h3>$2.5M NSF Grant Awarded for Distributed Systems Research</h3>
+                    <p class="news-meta">January 15, 2025</p>
+                    <p>Our research group has been awarded a prestigious NSF grant to advance fault-tolerant distributed computing. The three-year project will focus on developing novel consensus mechanisms for large-scale systems.</p>
+                    <span class="news-tag">Funding</span>
+                </div>
+                <div class="news-item">
+                    <h3>Best Paper Award at SOSP 2024</h3>
+                    <p class="news-meta">December 20, 2024</p>
+                    <p>Dr. Sarah Chen and her team received the Best Paper Award at the ACM Symposium on Operating Systems Principles for their work on scalable consensus algorithms.</p>
+                    <span class="news-tag">Award</span>
+                </div>
+                <div class="news-item">
+                    <h3>New Industry Partnership with TechCorp</h3>
+                    <p class="news-meta">November 30, 2024</p>
+                    <p>We've established a strategic partnership with TechCorp to develop next-generation edge computing platforms. The collaboration includes joint research projects and student internship opportunities.</p>
+                    <span class="news-tag">Partnership</span>
+                </div>
+                <div class="news-item">
+                    <h3>PhD Student Jessica Liu Wins Outstanding Research Award</h3>
+                    <p class="news-meta">November 15, 2024</p>
+                    <p>Jessica Liu has been recognized by the IEEE Computer Society for her groundbreaking work on edge computing architectures. Her research promises to revolutionize IoT system design.</p>
+                    <span class="news-tag">Student Award</span>
+                </div>
+                <div class="news-item">
+                    <h3>Systems Lab Hosts International Workshop</h3>
+                    <p class="news-meta">October 25, 2024</p>
+                    <p>Over 100 researchers from around the world gathered for our annual International Workshop on Advanced Systems Architecture. The event featured keynotes, panel discussions, and hands-on tutorials.</p>
+                    <span class="news-tag">Event</span>
+                </div>
+                <div class="news-item">
+                    <h3>Open Source Framework Reaches 10K GitHub Stars</h3>
+                    <p class="news-meta">October 10, 2024</p>
+                    <p>Our open-source distributed systems framework has achieved a major milestone with over 10,000 stars on GitHub. The project is now being used by companies worldwide for production deployments.</p>
+                    <span class="news-tag">Open Source</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2>Latest Blog Posts</h2>
+            <div class="blog-post">
+                <h3>The Future of Distributed Computing: Trends and Challenges</h3>
+                <p class="blog-meta">December 15, 2024 • Dr. Sarah Chen</p>
+                <p>Exploring emerging paradigms in distributed systems and their implications for next-generation applications. From serverless computing to edge AI, we discuss the key trends shaping the future.</p>
+            </div>
+            <div class="blog-post">
+                <h3>Building Resilient Systems: Lessons from Production Failures</h3>
+                <p class="blog-meta">November 28, 2024 • Dr. Michael Rodriguez</p>
+                <p>Analysis of real-world system failures and the design principles that can prevent them. Case studies from major tech companies and actionable insights for system architects.</p>
+            </div>
+            <div class="blog-post">
+                <h3>Privacy-First System Design in the Age of Data</h3>
+                <p class="blog-meta">November 10, 2024 • Dr. Emily Watson</p>
+                <p>How to build systems that protect user privacy by design. Techniques for implementing differential privacy, secure multiparty computation, and zero-knowledge proofs in practice.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Systems Research Group. All rights reserved.</p>
+            <p>Contact us: systems-lab@university.edu | (555) 123-4567</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add hover effects for cards
+        document.querySelectorAll('.person-card, .course-card, .resource-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

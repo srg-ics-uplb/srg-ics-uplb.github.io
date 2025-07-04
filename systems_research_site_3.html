@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems Research Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            left: 0;
+        }
+
+        nav a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .news-item {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .news-date {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .person-card {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .person-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+
+        .person-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .person-info h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .person-role {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .publication-item {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #764ba2;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.2);
+        }
+
+        .pub-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .pub-authors {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .pub-venue {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .course-item {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+
+        .course-code {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-card {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .blog-post {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .blog-meta {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 30px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .person-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Systems Research Group</h1>
+            <p class="subtitle">Advancing the frontiers of distributed systems, operating systems, and computational infrastructure</p>
+            <nav>
+                <a href="#news">News</a>
+                <a href="#about">About</a>
+                <a href="#people">People</a>
+                <a href="#publications">Publications</a>
+                <a href="#courses">Courses</a>
+                <a href="#resources">Resources</a>
+                <a href="#blog">Blog</a>
+                <a href="#" onclick="showPublicationsPage()">All Publications</a>
+                <a href="#" onclick="showAlumniPage()">Alumni</a>
+            </nav>
+        </header>
+
+        <div id="main-content">
+            <section id="news" class="section">
+                <h2>Latest News</h2>
+                <div class="news-item">
+                    <div class="news-date">December 15, 2024</div>
+                    <h3>Paper Accepted at OSDI 2025</h3>
+                    <p>Our work on "Efficient Memory Management in Distributed Systems" has been accepted for publication at the 19th USENIX Symposium on Operating Systems Design and Implementation.</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">November 28, 2024</div>
+                    <h3>New NSF Grant Awarded</h3>
+                    <p>We've received a $2.5M NSF grant to investigate next-generation container orchestration systems for edge computing environments.</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">October 10, 2024</div>
+                    <h3>Best Paper Award at SOSP</h3>
+                    <p>Our paper "Scalable Consensus in Byzantine Fault-Tolerant Systems" won the Best Paper Award at ACM SOSP 2024.</p>
+                </div>
+            </section>
+
+            <section id="about" class="section">
+                <h2>About Our Group</h2>
+                <p>The Systems Research Group focuses on building robust, scalable, and efficient computer systems that power modern computing infrastructure. Our research spans distributed systems, operating systems, cloud computing, and emerging computational paradigms.</p>
+                <p>We tackle fundamental challenges in system design, including fault tolerance, scalability, security, and performance optimization. Our work has direct impact on real-world systems used by millions of users worldwide.</p>
+                <p>Our interdisciplinary approach combines theoretical foundations with practical implementation, ensuring that our research contributions are both academically rigorous and industrially relevant.</p>
+            </section>
+
+            <section id="people" class="section">
+                <h2>People</h2>
+                <div class="person-card">
+                    <div class="person-avatar">DS</div>
+                    <div class="person-info">
+                        <h3>Dr. Sarah Chen</h3>
+                        <div class="person-role">Principal Investigator</div>
+                        <p>Professor of Computer Science specializing in distributed systems and fault tolerance. PhD from MIT, previously at Google and Microsoft Research.</p>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">MR</div>
+                    <div class="person-info">
+                        <h3>Dr. Michael Rodriguez</h3>
+                        <div class="person-role">Associate Professor</div>
+                        <p>Expert in operating systems and virtualization technologies. PhD from Stanford, former Principal Engineer at VMware.</p>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">EK</div>
+                    <div class="person-info">
+                        <h3>Emily Kim</h3>
+                        <div class="person-role">PhD Student</div>
+                        <p>Researching container orchestration and microservices architecture. MS from Carnegie Mellon University.</p>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">JW</div>
+                    <div class="person-info">
+                        <h3>James Wilson</h3>
+                        <div class="person-role">PhD Student</div>
+                        <p>Working on Byzantine fault-tolerant consensus algorithms and blockchain systems. MS from UC Berkeley.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications" class="section">
+                <h2>Recent Publications</h2>
+                <div class="publication-item">
+                    <div class="pub-title">Scalable Consensus in Byzantine Fault-Tolerant Systems</div>
+                    <div class="pub-authors">J. Wilson, S. Chen, M. Rodriguez</div>
+                    <div class="pub-venue">ACM SOSP 2024</div>
+                    <p>A novel approach to achieving consensus in large-scale distributed systems with Byzantine failures.</p>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">Efficient Memory Management in Distributed Systems</div>
+                    <div class="pub-authors">E. Kim, S. Chen</div>
+                    <div class="pub-venue">USENIX OSDI 2025 (To appear)</div>
+                    <p>Techniques for optimizing memory allocation and garbage collection in distributed computing environments.</p>
+                </div>
+                <div class="publication-item">
+                    <div class="pub-title">Container Orchestration at Edge Scale</div>
+                    <div class="pub-authors">E. Kim, M. Rodriguez, S. Chen</div>
+                    <div class="pub-venue">IEEE ICDCS 2024</div>
+                    <p>Addressing the challenges of deploying containerized applications in edge computing scenarios.</p>
+                </div>
+                <a href="#" onclick="showPublicationsPage()" class="btn">View All Publications</a>
+            </section>
+
+            <section id="courses" class="section">
+                <h2>Courses</h2>
+                <div class="course-item">
+                    <div class="course-code">CS 6480 - Advanced Operating Systems</div>
+                    <h3>Graduate-level course covering modern OS design</h3>
+                    <p>Topics include kernel architecture, memory management, file systems, and virtualization. Hands-on projects involve implementing key OS components.</p>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">CS 5450 - Distributed Systems</div>
+                    <h3>Principles and practice of distributed computing</h3>
+                    <p>Covers consensus algorithms, distributed databases, fault tolerance, and scalability. Students build a distributed key-value store.</p>
+                </div>
+                <div class="course-item">
+                    <div class="course-code">CS 4410 - Systems Programming</div>
+                    <h3>Undergraduate introduction to systems programming</h3>
+                    <p>C programming, Unix systems programming, networking, and concurrency. Final project involves building a web server.</p>
+                </div>
+            </section>
+
+            <section id="resources" class="section">
+                <h2>Resources</h2>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">📚</div>
+                        <h3>Reading List</h3>
+                        <p>Curated collection of seminal papers in systems research</p>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🛠️</div>
+                        <h3>Tools & Frameworks</h3>
+                        <p>Open-source tools developed by our group</p>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">📊</div>
+                        <h3>Datasets</h3>
+                        <p>Performance benchmarks and evaluation datasets</p>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🎓</div>
+                        <h3>Tutorials</h3>
+                        <p>Step-by-step guides for systems programming</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="blog" class="section">
+                <h2>Latest Blog Posts</h2>
+                <div class="blog-post">
+                    <div class="blog-title">The Future of Container Orchestration</div>
+                    <div class="blog-meta">By Emily Kim • December 1, 2024</div>
+                    <p>Exploring emerging trends in container orchestration and their implications for edge computing architectures.</p>
+                </div>
+                <div class="blog-post">
+                    <div class="blog-title">Debugging Distributed Systems: Lessons Learned</div>
+                    <div class="blog-meta">By Dr. Sarah Chen • November 15, 2024</div>
+                    <p>A comprehensive guide to debugging complex distributed systems based on years of research experience.</p>
+                </div>
+                <div class="blog-post">
+                    <div class="blog-title">Memory Management in Modern OSes</div>
+                    <div class="blog-meta">By Dr. Michael Rodriguez • October 28, 2024</div>
+                    <p>Deep dive into advanced memory management techniques and their performance implications.</p>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Systems Research Group. All rights reserved.</p>
+            <p>Contact us: systems-group@university.edu | (555) 123-4567</p>
+        </footer>
+    </div>
+
+    <script>
+        function showPublicationsPage() {
+            document.getElementById('main-content').innerHTML = `
+                <section class="section">
+                    <h2>All Publications</h2>
+                    <div style="margin-bottom: 30px;">
+                        <a href="#" onclick="showMainPage()" class="btn">← Back to Home</a>
+                    </div>
+                    
+                    <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8rem;">2024</h3>
+                    <div class="publication-item">
+                        <div class="pub-title">Scalable Consensus in Byzantine Fault-Tolerant Systems</div>
+                        <div class="pub-authors">J. Wilson, S. Chen, M. Rodriguez</div>
+                        <div class="pub-venue">ACM SOSP 2024</div>
+                        <p>A novel approach to achieving consensus in large-scale distributed systems with Byzantine failures. This work introduces a new consensus protocol that scales to thousands of nodes while maintaining strong consistency guarantees.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <div class="pub-title">Container Orchestration at Edge Scale</div>
+                        <div class="pub-authors">E. Kim, M. Rodriguez, S. Chen</div>
+                        <div class="pub-venue">IEEE ICDCS 2024</div>
+                        <p>Addressing the challenges of deploying containerized applications in edge computing scenarios. We propose a novel scheduling algorithm that optimizes for both performance and energy efficiency.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <div class="pub-title">Fault-Tolerant Microservices Architecture</div>
+                        <div class="pub-authors">A. Thompson, S. Chen</div>
+                        <div class="pub-venue">USENIX ATC 2024</div>
+                        <p>A comprehensive framework for building resilient microservices that can handle partial failures gracefully while maintaining system availability.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                    
+                    <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8rem; margin-top: 40px;">2023</h3>
+                    <div class="publication-item">
+                        <div class="pub-title">Optimizing Memory Allocation in Cloud Environments</div>
+                        <div class="pub-authors">M. Rodriguez, E. Kim, S. Chen</div>
+                        <div class="pub-venue">ACM EuroSys 2023</div>
+                        <p>Novel techniques for dynamic memory allocation in virtualized cloud environments, reducing memory fragmentation by up to 40%.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <div class="pub-title">Blockchain-Based Consensus for IoT Networks</div>
+                        <div class="pub-authors">J. Wilson, L. Zhang, S. Chen</div>
+                        <div class="pub-venue">IEEE INFOCOM 2023</div>
+                        <p>A lightweight blockchain consensus mechanism designed specifically for resource-constrained IoT devices.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <div class="pub-title">Performance Analysis of Distributed File Systems</div>
+                        <div class="pub-authors">R. Patel, M. Rodriguez, S. Chen</div>
+                        <div class="pub-venue">USENIX FAST 2023</div>
+                        <p>Comprehensive performance evaluation of modern distributed file systems under various workloads and failure scenarios.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                    
+                    <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8rem; margin-top: 40px;">2022</h3>
+                    <div class="publication-item">
+                        <div class="pub-title">Serverless Computing: Challenges and Opportunities</div>
+                        <div class="pub-authors">S. Chen, M. Rodriguez, K. Johnson</div>
+                        <div class="pub-venue">ACM SOCC 2022</div>
+                        <p>A survey of serverless computing platforms and identification of key research challenges in function-as-a-service architectures.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                    
+                    <div class="publication-item">
+                        <div class="pub-title">Efficient Load Balancing in Distributed Systems</div>
+                        <div class="pub-authors">T. Anderson, E. Kim, S. Chen</div>
+                        <div class="pub-venue">IEEE IPDPS 2022</div>
+                        <p>A machine learning-based approach to dynamic load balancing that adapts to changing workload patterns in real-time.</p>
+                        <a href="#" class="btn" style="margin-top: 10px;">PDF</a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function showAlumniPage() {
+            document.getElementById('main-content').innerHTML = `
+                <section class="section">
+                    <h2>Alumni</h2>
+                    <div style="margin-bottom: 30px;">
+                        <a href="#" onclick="showMainPage()" class="btn">← Back to Home</a>
+                    </div>
+                    
+                    <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8rem;">PhD Graduates</h3>
+                    <div class="person-card">
+                        <div class="person-avatar">AT</div>
+                        <div class="person-info">
+                            <h3>Dr. Alex Thompson</h3>
+                            <div class="person-role">PhD 2024 • Now at Google Research</div>
+                            <p>Thesis: "Fault-Tolerant Microservices Architecture for Cloud-Native Applications"</p>
+                            <p><strong>Current Position:</strong> Senior Research Scientist at Google, working on distributed systems for machine learning workloads.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">LZ</div>
+                        <div class="person-info">
+                            <h3>Dr. Lisa Zhang</h3>
+                            <div class="person-role">PhD 2023 • Now at Amazon Web Services</div>
+                            <p>Thesis: "Scalable Consensus Algorithms for Blockchain Networks"</p>
+                            <p><strong>Current Position:</strong> Principal Engineer at AWS, leading the development of next-generation database systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">RP</div>
+                        <div class="person-info">
+                            <h3>Dr. Raj Patel</h3>
+                            <div class="person-role">PhD 2023 • Now at Meta</div>
+                            <p>Thesis: "Performance Optimization Techniques for Distributed File Systems"</p>
+                            <p><strong>Current Position:</strong> Staff Software Engineer at Meta, working on infrastructure systems for social media platforms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">KJ</div>
+                        <div class="person-info">
+                            <h3>Dr. Karen Johnson</h3>
+                            <div class="person-role">PhD 2022 • Now at Microsoft Research</div>
+                            <p>Thesis: "Serverless Computing: System Design and Performance Analysis"</p>
+                            <p><strong>Current Position:</strong> Senior Researcher at Microsoft Research, focusing on cloud computing and serverless architectures.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">TA</div>
+                        <div class="person-info">
+                            <h3>Dr. Tom Anderson</h3>
+                            <div class="person-role">PhD 2022 • Now at Netflix</div>
+                            <p>Thesis: "Machine Learning-Based Load Balancing for Distributed Systems"</p>
+                            <p><strong>Current Position:</strong> Senior Staff Engineer at Netflix, leading the development of content delivery optimization systems.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8rem; margin-top: 40px;">Master's Graduates</h3>
+                    <div class="person-card">
+                        <div class="person-avatar">DL</div>
+                        <div class="person-info">
+                            <h3>David Lee</h3>
+                            <div class="person-role">MS 2024 • Now at Stripe</div>
+                            <p>Thesis: "Efficient Data Replication in Distributed Databases"</p>
+                            <p><strong>Current Position:</strong> Software Engineer at Stripe, working on payment processing infrastructure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">SB</div>
+                        <div class="person-info">
+                            <h3>Sarah Brown</h3>
+                            <div class="person-role">MS 2024 • Now at Uber</div>
+                            <p>Thesis: "Container Security in Multi-Tenant Environments"</p>
+                            <p><strong>Current Position:</strong> Senior Software Engineer at Uber, focusing on platform security and infrastructure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">MG</div>
+                        <div class="person-info">
+                            <h3>Mark Garcia</h3>
+                            <div class="person-role">MS 2023 • Now at Airbnb</div>
+                            <p>Thesis: "Edge Computing for Real-Time Applications"</p>
+                            <p><strong>Current Position:</strong> Software Engineer at Airbnb, working on distributed systems for booking and payment platforms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">JC</div>
+                        <div class="person-info">
+                            <h3>Jennifer Chen</h3>
+                            <div class="person-role">MS 2023 • Now at Dropbox</div>
+                            <p>Thesis: "Optimizing Network Performance in Cloud Storage Systems"</p>
+                            <p><strong>Current Position:</strong> Senior Software Engineer at Dropbox, leading file synchronization and storage optimization efforts.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">BW</div>
+                        <div class="person-info">
+                            <h3>Brian Wang</h3>
+                            <div class="person-role">MS 2022 • Now at Snowflake</div>
+                            <p>Thesis: "Query Optimization in Distributed Data Warehouses"</p>
+                            <p><strong>Current Position:</strong> Staff Software Engineer at Snowflake, working on query engine optimization and performance tuning.</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8rem; margin-top: 40px;">Postdoctoral Researchers</h3>
+                    <div class="person-card">
+                        <div class="person-avatar">NP</div>
+                        <div class="person-info">
+                            <h3>Dr. Nina Petrov</h3>
+                            <div class="person-role">Postdoc 2022-2024 • Now at Stanford University</div>
+                            <p>Research Focus: "Quantum-Classical Hybrid Systems for Distributed Computing"</p>
+                            <p><strong>Current Position:</strong> Assistant Professor at Stanford University, Department of Computer Science.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-card">
+                        <div class="person-avatar">HS</div>
+                        <div class="person-info">
+                            <h3>Dr. Hassan Shah</h3>
+                            <div class="person-role">Postdoc 2021-2023 • Now at MIT</div>
+                            <p>Research Focus: "Federated Learning Systems and Privacy-Preserving Computation"</p>
+                            <p><strong>Current Position:</strong> Research Scientist at MIT CSAIL, working on distributed machine learning systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding: 30px; background: #f0f4ff; border-radius: 15px; border-left: 5px solid #667eea;">
+                        <h3 style="color: #333; margin-bottom: 15px;">Alumni Network</h3>
+                        <p>Our alumni have gone on to make significant contributions in academia and industry. They work at leading technology companies, research institutions, and startups worldwide. We maintain strong connections with our alumni community through:</p>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Annual alumni reunion events</li>
+                            <li>Guest lectures and seminars</li>
+                            <li>Collaborative research projects</li>
+                            <li>Mentorship programs for current students</li>
+                            <li>Industry partnerships and internship opportunities</li>
+                        </ul>
+                    </div>
+                </section>
+            `;
+        }
+
+        function showMainPage() {
+            location.reload();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
