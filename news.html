@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | Systems Research Group | UPLB Institute of Computer Science</title>
+    <style>
+   /* Link colors */
+   a {
+      color: #0A6836; /* Forest Green for links */
+      text-decoration: none;
+   }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Optima', 'Palatino', 'Avenir', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8B1538 0%, #2E5233 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(139, 21, 56, 0.1), transparent);
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 800;
+            font-family: 'Optima', 'Palatino', serif;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #8B1538;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 21, 56, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav a:hover::before {
+            left: 100%;
+        }
+
+        .nav a:hover {
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav a.active {
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            color: white;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-family: 'Optima', 'Palatino', serif;
+        }
+
+        .news-item {
+            background: linear-gradient(135deg, #f8f9ff, #f0f4f1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #8B1538;
+            overflow: hidden;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-content {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .news-text {
+            flex: 1;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .news-date {
+            color: #8B1538;
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .news-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .news-link {
+            color: #8B1538;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .news-link:hover {
+            color: #2E5233;
+        }
+
+        .news-image {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-image:hover {
+            transform: scale(1.05);
+        }
+
+        .news-placeholder {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        .year-section {
+            margin-bottom: 40px;
+        }
+
+        .year-header {
+            font-size: 2rem;
+            color: #8B1538;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B1538;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .news-meta a {
+            color: #8B1538;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .news-meta a:hover {
+            color: #2E5233;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-news {
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            color: white;
+            border-left: 4px solid #F5D800;
+        }
+
+        .featured-news .news-title {
+            color: white;
+        }
+
+        .featured-news .news-date {
+            color: #F5D800;
+        }
+
+        .featured-news .news-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .featured-news .news-link {
+            color: #F5D800;
+        }
+
+        .featured-news .news-link:hover {
+            color: white;
+        }
+
+        .featured-news .news-meta {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .featured-news .news-meta a {
+            color: #F5D800;
+        }
+
+        .featured-news .news-meta a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav {
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .news-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .news-image, .news-placeholder {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+         <header class="header">
+            <img class="logo-placeholder" src="./logos/logo-white-background.png" />
+            <h1>Systems Research Group @ UPLB ICS</h1>
+            <p>Operating Systems::Computer Networks::Distributed Systems::Cybersecurity</p>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="news.html" class="active">News</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#people">People</a>
+                <a href="index.html#research">Research</a>
+                <a href="index.html#publications">Publications</a>
+                <a href="index.html#courses">Courses</a>
+                <a href="https://srg-ics-uplb.github.io/blog/">Blog</a>
+                <a href="index.html#resources">Resources</a>
+            </nav>
+        </header>
+
+        <section class="section">
+            <h2>Recent News</h2>
+            
+            <div class="year-section">
+                <div class="year-header">2025</div>
+                
+                <div class="news-item featured-news" id="news-welcome-new-website">
+                    <div class="news-content">
+                        <div class="news-text">
+                            <h3 class="news-title">🎉 Welcome to our new website!</h3>
+                            <div class="news-date">July 10, 2025</div>
+                            <p class="news-description">We've launched a brand new website for the Systems Research Group! Our <a href="https://sites.google.com/view/srg-ics-uplb/home" style="color: #F5D800;">old website</a>, hosted on Google Sites, is still available for historical purposes. This modern, responsive single-page site was built with the help of AI tools and features improved navigation, better mobile support, and enhanced visual design.</p>
+                            <div class="news-meta">
+                                <a href="#news-welcome-new-website">🔗 Share</a>
+                                <span>•</span>
+                                <span>📂 Website</span>
+                            </div>
+                        </div>
+                        <div class="news-placeholder">
+                            <img class="news-image" src="./images/news/001-oldsite.png" alt="Old SRG website screenshot" />
+                        </div>
+                    </div>
+                </div>
+
+<!--
+                <div class="news-item" id="news-academic-year-2025">
+                    <div class="news-content">
+                        <div class="news-text">
+                            <h3 class="news-title">Academic Year 2025-2026 Course Offerings</h3>
+                            <div class="news-date">July 5, 2025</div>
+                            <p class="news-description">The Systems Research Group is offering several courses for the upcoming academic year, including CMSC 125 (Operating Systems), CMSC 137 (Data Communications and Networking), and special topics courses in Cybersecurity and Modern Distributed Systems. Registration is now open for enrolled students.</p>
+                            <div class="news-meta">
+                                <a href="#news-academic-year-2025">🔗 Share</a>
+                                <span>•</span>
+                                <span>📚 Courses</span>
+                            </div>
+                        </div>
+                        <div class="news-placeholder">📚</div>
+                    </div>
+                </div>
+
+                <div class="news-item" id="news-research-collaboration">
+                    <div class="news-content">
+                        <div class="news-text">
+                            <h3 class="news-title">New Research Collaboration Opportunities</h3>
+                            <div class="news-date">June 28, 2025</div>
+                            <p class="news-description">We're actively seeking collaborations with industry partners and other research institutions. Our group is particularly interested in projects involving cloud computing, cybersecurity, and autonomous systems. Contact us if you're interested in collaborative research opportunities.</p>
+                            <div class="news-meta">
+                                <a href="#news-research-collaboration">🔗 Share</a>
+                                <span>•</span>
+                                <span>🤝 Collaboration</span>
+                            </div>
+                        </div>
+                        <div class="news-placeholder">🤝</div>
+                    </div>
+                </div>
+
+                <div class="news-item" id="news-student-applications">
+                    <div class="news-content">
+                        <div class="news-text">
+                            <h3 class="news-title">Graduate Student Applications Open</h3>
+                            <div class="news-date">June 15, 2025</div>
+                            <p class="news-description">We're accepting applications for graduate students interested in systems research. We offer research opportunities in operating systems, computer networks, distributed systems, and cybersecurity. Interested students should have a strong background in computer science and programming.</p>
+                            <div class="news-meta">
+                                <a href="#news-student-applications">🔗 Share</a>
+                                <span>•</span>
+                                <span>🎓 Students</span>
+                            </div>
+                        </div>
+                        <div class="news-placeholder">🎓</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-section">
+                <div class="year-header">2024</div>
+                
+                <div class="news-item" id="news-conference-presentations">
+                    <div class="news-content">
+                        <div class="news-text">
+                            <h3 class="news-title">Conference Presentations and Publications</h3>
+                            <div class="news-date">December 10, 2024</div>
+                            <p class="news-description">Members of our research group presented their latest work at several international conferences this year. Our research on autonomous surface vehicles and cybersecurity received significant attention from the academic community.</p>
+                            <div class="news-meta">
+                                <a href="#news-conference-presentations">🔗 Share</a>
+                                <span>•</span>
+                                <span>📝 Publications</span>
+                            </div>
+                        </div>
+                        <div class="news-placeholder">📝</div>
+                    </div>
+                </div>
+
+                <div class="news-item" id="news-sensor-development">
+                    <div class="news-content">
+                        <div class="news-text">
+                            <h3 class="news-title">Wireless Sensor Network Project Update</h3>
+                            <div class="news-date">September 22, 2024</div>
+                            <p class="news-description">Our team has made significant progress on the wireless sensor network project for efficient irrigation systems. The real-time monitoring system is now being tested in both upland and lowland crop production environments.</p>
+                            <div class="news-meta">
+                                <a href="#news-sensor-development">🔗 Share</a>
+                                <span>•</span>
+                                <span>🔬 Research</span>
+                            </div>
+                        </div>
+                        <div class="news-placeholder">🔬</div>
+                    </div>
+                </div>
+
+                <div class="news-item" id="news-drone-research">
+                    <div class="news-content">
+                        <div class="news-text">
+                            <h3 class="news-title">Autonomous Drone Navigation Research</h3>
+                            <div class="news-date">August 15, 2024</div>
+                            <p class="news-description">Our research group has been developing advanced tools for autonomous navigation in drones and surface water vehicles. The project focuses on environmental monitoring and data collection in challenging terrain.</p>
+                            <div class="news-meta">
+                                <a href="#news-drone-research">🔗 Share</a>
+                                <span>•</span>
+                                <span>🚁 Drones</span>
+                            </div>
+                        </div>
+                        <div class="news-placeholder">🚁</div>
+                    </div>
+                </div>
+            </div>
+-->
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="color: #666; font-style: italic;">Stay tuned for more updates from the Systems Research Group!</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 Systems Research Group. All rights reserved.</p>
+            <p>Contact: jchermocilla@up.edu.ph </p>
+            <p><a href="https://ics.uplb.edu.ph">Institute of Computer Science</a> | <a href="https://cas.uplb.edu.ph">College of Arts and Sciences</a> | <a href="https://uplb.edu.ph">University of the Philippines Los Banos</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.section, .news-item').forEach(element => {
+            element.style.transform = 'translateY(20px)';
+            element.style.opacity = '0';
+            element.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Add staggered animation to news items
+        document.querySelectorAll('.news-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
