@@ -162,6 +162,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
+            text-decoration: none;
         }
 
         .person-card {
@@ -172,6 +173,9 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
         .person-card::before {
@@ -182,11 +186,14 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #8B1538, #F5D800);
+            text-decoration: none;
         }
 
         .person-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
         }
 
         .avatar {
@@ -285,6 +292,10 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+ 
         }
 
         .course-card::before {
@@ -300,6 +311,7 @@
         .course-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            color: inherit;
         }
 
         .course-code {
@@ -526,24 +538,24 @@
         <section id="people" class="section">
             <h2>People</h2>
             <div class="people-grid">
-                <div class="person-card">
+                <a href="https://jachermocilla.org" class="person-card">
                     <img class="avatar" src="images/people/jach.png">
                     <h3>Joseph Anthony C. Hermocilla</h3>
                     <p><strong>Assistant Professor/Group Leader</strong></p>
                     <p>Operating Systems, Computer Networks, Cybersecurity</p>
-                </div>
-                <div class="person-card">
+                </a>
+                <a href="#" class="person-card">
                     <img class="avatar" src="images/people/danny.png">
                     <h3>Danilo J. Mercado</h3>
                     <p><strong>Assistant Professor</strong></p>
                     <p>Internet Security, Distributed Systems, Drones</p>
-                </div>
-                <div class="person-card">
+                </a>
+                <a href="#" class="person-card">
                     <img class="avatar" src="images/people/ilay.jpg">
                     <h3>Elijah Nicholas C. Isungga</h3>
                     <p><strong>Instructor</strong></p>
                     <p>Operating Systems, Database Systems, Cybersecurity</p>
-                </div>
+                </a>
            </div>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="#" class="resource-link" style="display: inline-block; max-width: 300px;">
@@ -618,31 +630,31 @@
         <section id="courses" class="section">
             <h2>Courses</h2>
             <div class="course-grid">
-                <div class="course-card">
+                <a href="https://srg-ics-uplb.github.io/cmsc125" class="course-card">
                     <div class="course-code">CMSC 125</div>
                     <h3>Operating Systems</h3>
                     <p>Processor management, memory management, file and disk management, resource management, concurrent processes, networks and distributed systems.</p>
-                </div>
-                <div class="course-card">
+                </a>
+                <a href="https://srg-ics-uplb.github.io/cmsc137" class="course-card">
                     <div class="course-code">CMSC 137</div>
                     <h3>Data Communications and Networking</h3>
                     <p>Basic principles of data communications; design issues and protocols in the layers of data network; networks for various applications.</p>
-                </div>
-                <div class="course-card">
+                </a>
+                <a href="https://srg-ics-uplb.github.io/cmsc191cybersecurity" class="course-card">
                     <div class="course-code">CMSC 191 (Special Topics)</div>
                     <h3>Cybersecurity</h3>
                     <p>Concepts in protecting computer systems and networks from attacks.</p>
-                </div>
-                <div class="course-card">
+                </a>
+                <a href="#" class="course-card">
                     <div class="course-code">CMSC 291 (Special Topics)</div>
                     <h3>Modern Distributed Systems</h3>
                     <p>Theory and practice in modern distributed systems.</p>
-                </div>
-                <div class="course-card">
+                </a>
+                <a href="#" class="course-card">
                     <div class="course-code">CMSC 215</div>
                     <h3>Advanced Computer Systems</h3>
                     <p>Advanced topics in OS, Computer Networks, and Distributed Systems.</p>
-                </div>
+                </a>
             </div>
         </section>
 
