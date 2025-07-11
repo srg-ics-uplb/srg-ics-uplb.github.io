@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminars | Systems Research Group | UPLB Institute of Computer Science</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Optima', 'Palatino', 'Avenir', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8B1538 0%, #2E5233 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #8B1538;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .seminar-item {
+            background: linear-gradient(135deg, #f8f9ff, #f0f4f1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #8B1538;
+            transition: all 0.3s ease;
+        }
+
+        .seminar-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .seminar-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .seminar-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .seminar-speaker {
+            font-size: 1.1rem;
+            color: #8B1538;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .seminar-affiliation {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .seminar-datetime {
+            font-size: 0.9rem;
+            color: #2E5233;
+            font-weight: 500;
+        }
+
+        .poster-link {
+            width: 80px;
+            height: 100px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .poster-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+.collapsible-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.share-btn {
+    background: linear-gradient(135deg, #0A6836, #2E5233);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.share-btn:hover {
+    background: linear-gradient(135deg, #2E5233, #0A6836);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.share-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #0A6836, #2E5233);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.share-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+        .collapsible-btn {
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .collapsible-btn:hover {
+            background: linear-gradient(135deg, #2E5233, #8B1538);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .collapsible-btn.active {
+            background: linear-gradient(135deg, #0A6836, #2E5233);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .collapsible-content.active {
+            max-height: 500px;
+        }
+
+        .collapsible-inner {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid rgba(139, 21, 56, 0.1);
+        }
+
+        .collapsible-inner h4 {
+            color: #8B1538;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .collapsible-inner p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .upcoming-badge {
+            background: linear-gradient(135deg, #F5D800, #FF6B35);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .past-item {
+            opacity: 0.8;
+        }
+
+        .past-item .seminar-item {
+            background: linear-gradient(135deg, #f5f5f5, #f0f0f0);
+            border-left-color: #999;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #0A6836;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #8B1538;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                gap: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .seminar-header {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .poster-link {
+                width: 100%;
+                height: 120px;
+            }
+            
+            .collapsible-buttons {
+                flex-wrap: wrap;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Systems Research Group Seminars </h1>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+            </nav>
+        </header>
+
+        <section class="section past-item">
+            
+            <div class="seminar-item" id="seminar-tech-career-japan">
+                <div class="seminar-header">
+                    <div class="seminar-info">
+                        <h3>Hakcking the Future: Building a Global Tech Career in Japan</h3>
+                        <div class="seminar-speaker">Mark Jay Nicolas</div>
+                        <div class="seminar-affiliation">Software Enginner</div>
+                        <div class="seminar-datetime">📅 February  13, 2025 | 🕐 2:00 PM | 📍 EAA Lecture Hall</div>
+                    </div>
+                    <a href="#" class="poster-link" title="View Poster">
+                        🏥
+                    </a>
+                </div>
+               <div class="collapsible-buttons">
+                  <button class="collapsible-btn" onclick="toggleCollapsible(this, 'abstract3')">Abstract</button>
+                  <button class="collapsible-btn" onclick="toggleCollapsible(this, 'bio3')">Speaker Bio</button>
+                 <button class="share-btn" onclick="shareItem('seminar-tech-career-japan')">🔗 Share</button>
+               </div>
+ 
+                <div id="abstract3" class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <h4>Abstract</h4>
+                        <p>(TBA)</p>
+                    </div>
+                </div>
+                <div id="bio3" class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <h4>Speaker Biography</h4>
+                        <p>Mark Jay is a UPLB BS Computer Science graduate (Class of 2019) who built his career in software engineering and cybersecurity. After moving to Japan, he started as a penetration test engineer, later transitioning to security operations, where he developed SOAR solutions with Python and automated workflows using Ansible. In March 2024, he joined Early Reflections as a software engineer, contributing to in-house product development, contract projects, and R&D. </p>
+                    </div>
+                </div>
+                <!-- Share notification -->
+                <div id="shareNotification" class="share-notification">
+                     Link copied to clipboard!
+                </div>
+           </div>
+
+            <div class="seminar-item" id="seminar-beyond-coding">
+                <div class="seminar-header">
+                    <div class="seminar-info">
+                        <h3>Beyond Coding: Future Proofing your Career with Cybersecurity</h3>
+                        <div class="seminar-speaker">Erika Thea Ajes</div>
+                        <div class="seminar-affiliation">Software Engineer</div>
+                        <div class="seminar-datetime">📅 November  29, 2024 | 🕐 2:00 PM | 📍 EAA Lecture Hall</div>
+                    </div>
+                    <a href="#" class="poster-link" title="View Poster">
+                        🏥
+                    </a>
+                </div>
+               <div class="collapsible-buttons">
+                  <button class="collapsible-btn" onclick="toggleCollapsible(this, 'abstract2')">Abstract</button>
+                  <button class="collapsible-btn" onclick="toggleCollapsible(this, 'bio2')">Speaker Bio</button>
+                 <button class="share-btn" onclick="shareItem('seminar-beyond-coding')">🔗 Share</button>
+               </div>
+ 
+                <div id="abstract2" class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <h4>Abstract</h4>
+                        <p>(TBA)</p>
+                    </div>
+                </div>
+                <div id="bio2" class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <h4>Speaker Biography</h4>
+                        <p>With a strong background in backend engineering, Thea has successfully led small teams, collaborated with clients, and managed complex migration projects. She recently earned a one-year master’s degree in Applied Cybersecurity from the University of New Brunswick (UNB), Canada. Currently, she is advancing her cybersecurity expertise as a Cybersecurity Developer Intern at the Canadian Institute for Cybersecurity (CIC), with research focusing on password modeling and generative AI.</p>
+                    </div>
+                </div>
+                <!-- Share notification -->
+                <div id="shareNotification" class="share-notification">
+                     Link copied to clipboard!
+                </div>
+           </div>
+
+            <div class="seminar-item" id="seminar-white-box">
+                <div class="seminar-header">
+                    <div class="seminar-info">
+                        <h3>White-box Pentesting Fundamentals</h3>
+                        <div class="seminar-speaker">Nathan Xavier Golez</div>
+                        <div class="seminar-affiliation">Cybersecurity Enthusiast</div>
+                        <div class="seminar-datetime">📅 May 16, 2024 | 🕐 2:00 PM | 📍 SMA Lecture Hall</div>
+                    </div>
+                    <a href="#" class="poster-link" title="View Poster">
+                        🏥
+                    </a>
+                </div>
+               <div class="collapsible-buttons">
+                  <button class="collapsible-btn" onclick="toggleCollapsible(this, 'abstract1')">Abstract</button>
+                  <button class="collapsible-btn" onclick="toggleCollapsible(this, 'bio1')">Speaker Bio</button>
+                 <button class="share-btn" onclick="shareItem('seminar-white-box')">🔗 Share</button>
+               </div>
+ 
+                <div id="abstract1" class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <h4>Abstract</h4>
+                        <p>(TBA)</p>
+                    </div>
+                </div>
+                <div id="bio1" class="collapsible-content">
+                    <div class="collapsible-inner">
+                        <h4>Speaker Biography</h4>
+                        <p>Nathan is a 20-year-old Filipino cybersecurity enthusiast based in Abu Dhabi, United Arab Emirates, focusing on secure software development and vulnerability research. He holds industry certifications including  Offensive Security Certified Professional (OSCP) and CompTIA Network Security Professional (CNSP). His contributions extend to software security research, including playing a pivotal role in discovering multiple CVEs within the privacy-centric Brave Browser. </p>
+                    </div>
+                </div>
+                <!-- Share notification -->
+                <div id="shareNotification" class="share-notification">
+                     Link copied to clipboard!
+                </div>
+           </div>
+
+
+
+        </section>
+
+
+        <footer class="footer">
+            <p>&copy; 2025 Systems Research Group. All rights reserved.</p>
+            <p>Contact: <a href="mailto:jchermocilla@up.edu.ph">jchermocilla@up.edu.ph</a></p>
+            <p><a href="https://ics.uplb.edu.ph">Institute of Computer Science</a> | <a href="https://uplb.edu.ph">University of the Philippines Los Banos</a></p>
+        </footer>
+    </div>
+
+<script>
+    function shareItem(itemId) {
+        const currentUrl = window.location.href.split('#')[0];
+        const shareUrl = `${currentUrl}#${itemId}`;
+        
+        // Copy to clipboard
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            showShareNotification();
+        }).catch(() => {
+            // Fallback for browsers that don't support clipboard API
+            const textArea = document.createElement('textarea');
+            textArea.value = shareUrl;
+            document.body.appendChild(textArea);
+            textArea.select();
+            textArea.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showShareNotification();
+        });
+    }
+
+    function showShareNotification() {
+        const notification = document.getElementById('shareNotification');
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+
+    // Scroll to item if URL contains hash
+    function scrollToItemFromHash() {
+        const hash = window.location.hash;
+        if (hash) {
+            const element = document.querySelector(hash);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    // Add highlight effect
+                    element.style.outline = '3px solid #8B1538';
+                    element.style.outlineOffset = '5px';
+                    setTimeout(() => {
+                        element.style.outline = 'none';
+                        element.style.outlineOffset = '0';
+                    }, 3000);
+                }, 500);
+            }
+        }
+    }
+
+    // Call on page load
+    window.addEventListener('load', scrollToItemFromHash);
+    window.addEventListener('hashchange', scrollToItemFromHash);
+
+    function toggleCollapsible(button, contentId) {
+        const content = document.getElementById(contentId);
+        const isActive = content.classList.contains('active');
+        
+        // Close all other collapsibles in the same seminar item
+        const seminarItem = button.closest('.seminar-item');
+        const allContents = seminarItem.querySelectorAll('.collapsible-content');
+        const allButtons = seminarItem.querySelectorAll('.collapsible-btn');
+        
+        allContents.forEach(c => c.classList.remove('active'));
+        allButtons.forEach(b => b.classList.remove('active'));
+        
+        // Toggle the clicked one
+        if (!isActive) {
+            content.classList.add('active');
+            button.classList.add('active');
+        }
+    }
+
+    // Add smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add scroll animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.opacity = '1';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.section, .seminar-item').forEach(element => {
+        element.style.transform = 'translateY(20px)';
+        element.style.opacity = '0';
+        element.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+        observer.observe(element);
+    });
+</script>
+</body>
+</html>
