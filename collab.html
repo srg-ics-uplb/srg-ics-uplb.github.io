@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaboration Opportunities | Systems Research Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Optima', 'Palatino', 'Avenir', 'Helvetica', sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8B1538 0%, #2E5233 100%);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #8B1538;
+            font-size: 1.2rem;
+        }
+
+        .header h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+
+        .main-container {
+            margin-top: 90px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+
+        .content {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .page-title {
+            color: #8B1538;
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #8B1538;
+            padding-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #8B1538;
+            font-size: 1.45rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-left: 4px solid #F5D800;
+            padding-left: 15px;
+        }
+
+        .section h3 {
+            color: #2E5233;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 25px 0 12px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .section ul li:before {
+            content: "▸";
+            color: #8B1538;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .prerequisites {
+            background: #f8f9ff;
+            padding: 18px;
+            border-radius: 8px;
+            border-left: 4px solid #8B1538;
+            margin: 20px 0;
+        }
+
+        .modes li {
+            margin-bottom: 25px;
+        }
+
+        .contact-box {
+            background: #f8f9ff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <img src="./logos/ics-logo.jpg" class="logo" alt="ICS Logo">
+            <h1>UPLB Institute of Computer Science</h1>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="content">
+
+            <h1 class="page-title">Collaboration Opportunities</h1>
+            
+            <p style="font-size:1.05rem; margin-bottom:30px;">
+                The Systems Research Group actively seeks collaborations with academic institutions, industry partners, and public sector organizations. 
+                Our goal is to advance the state of the art in systems research while addressing real-world challenges through impactful, reproducible, and scalable solutions.
+            </p>
+
+            <section class="section">
+                <h2>Areas of Collaboration</h2>
+                <ul>
+                    <li><strong>Operating Systems and Systems Engineering</strong><br>
+                        Kernel design, resource management, performance optimization, and system instrumentation</li>
+                    <li><strong>Distributed Systems and Cloud Computing</strong><br>
+                        Fault tolerance, consensus protocols, large-scale data systems, microservices, and cloud-native architectures</li>
+                    <li><strong>Computer Networks</strong><br>
+                        Network measurement, software-defined networking (SDN), network security, and high-performance networking</li>
+                    <li><strong>Systems Security</strong><br>
+                        Secure system design, vulnerability analysis, trusted execution environments, and privacy-preserving systems</li>
+                    <li><strong>High-Performance Computing (HPC)</strong><br>
+                        Parallel computing, workload scheduling, performance tuning, and scalable infrastructure</li>
+                    <li><strong>Explainable and Reliable Systems</strong><br>
+                        System observability, debugging, and interpretability in complex system behavior</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Modes of Collaboration</h2>
+                
+                <h3>1. Research Partnerships</h3>
+                <ul class="modes">
+                    <li>Joint research projects leading to publications in top-tier venues</li>
+                    <li>Co-supervision of graduate students</li>
+                    <li>Development of novel systems, prototypes, or frameworks</li>
+                </ul>
+
+                <h3>2. Industry Collaboration</h3>
+                <ul class="modes">
+                    <li>Application of systems research to real-world production environments</li>
+                    <li>Performance optimization and system design consulting</li>
+                    <li>Joint development of tools, platforms, or infrastructure</li>
+                </ul>
+
+                <h3>3. Academic Collaboration</h3>
+                <ul class="modes">
+                    <li>Inter-university research initiatives</li>
+                    <li>Visiting researchers and exchange programs</li>
+                    <li>Joint grant proposals and funded research projects</li>
+                </ul>
+
+                <h3>4. Student Engagement</h3>
+                <ul class="modes">
+                    <li>Thesis and capstone project collaboration</li>
+                    <li>Internship and research assistantship opportunities</li>
+                    <li>Mentored participation in ongoing research projects</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Available Resources</h2>
+                <p>Collaborators may gain access to the group’s research infrastructure, including:</p>
+                <ul>
+                    <li>Compute and experimental platforms (e.g., HPC clusters, distributed testbeds)</li>
+                    <li>Containerized lab environments for reproducible experimentation</li>
+                    <li>Curated datasets and benchmarking tools</li>
+                    <li>Established research workflows and engineering practices</li>
+                </ul>
+                <p style="font-size:0.95rem; color:#555; margin-top:15px;">
+                    Access is subject to project scope, availability, and institutional policies.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2>Expectations from Collaborators</h2>
+                <ul>
+                    <li>Align with the group’s commitment to research integrity and reproducibility</li>
+                    <li>Contribute actively to project goals and timelines</li>
+                    <li>Adhere to agreed-upon authorship, data management, and IP policies</li>
+                    <li>Participate in regular coordination meetings and progress reporting</li>
+                </ul>
+            </section>
+
+            <div class="contact-box">
+                <h2 style="color:#8B1538; margin-bottom:15px;">Getting Started</h2>
+                <p>Potential collaborators are encouraged to initiate discussions by providing:</p>
+                <ul>
+                    <li>A brief description of the proposed collaboration</li>
+                    <li>Relevant background or prior work</li>
+                    <li>Expected outcomes and timeline</li>
+                    <li>Resource requirements (if any)</li>
+                </ul>
+                
+                <p style="margin-top:20px;">
+                    <strong>Contact:</strong> Please send your collaboration proposal or expression of interest to the Systems Research Group.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+```
+
+This HTML page follows the **exact same visual theme** as the CMSC 215 course catalog (colors, fonts, header with ICS logo, gradient, etc.) while keeping the design simple and clean as requested. You can save it as `collaboration.html` and place it in the same folder as the CMSC 215 page.
