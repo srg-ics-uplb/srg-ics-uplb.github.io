@@ -1,233 +1,650 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Systems Research Group | Institute of Computer Science | UP Los Banos - Alumni</title>
-<style>
-body {
-    font-family: Optima, Palatino, Avenir, Helvetica, sans-serif;
-    color: #4C0000; /* Approximate UP Maroon for text */
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni | Systems Research Group</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-h1, h2 {
-    color: #4C0000; /* UP Maroon */
-}
+        body {
+            font-family: 'Optima', 'Palatino', 'Avenir', 'Helvetica', sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f5f5f5;
+        }
 
-/* You might want to apply the Forest Green or Yellow to specific elements,
-   for example, if you had a navigation bar or distinct sections.
-   For simplicity, I'll apply it to a hypothetical 'highlight' class. */
-.highlight-green {
-    color: #0A6836; /* Forest Green */
-}
+        .header {
+            background: linear-gradient(135deg, #8B1538 0%, #2E5233 100%);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-.highlight-gold {
-    color: #FFB300; /* Yellow (approximating gold) */
-}
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-/* Example of applying a background color to a specific section, if you were to add one */
-.section-bg-green {
-    background-color: #0A6836; /* Forest Green */
-    color: white; /* Text color for contrast */
-    padding: 10px;
-}
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #8B1538;
+            font-size: 1.2rem;
+        }
 
-/* Link colors */
-a {
-    color: #0A6836; /* Forest Green for links */
-    text-decoration: none;
-}
+        .header h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
 
-a:hover {
-    text-decoration: underline;
-}
+        .main-container {
+            margin-top: 90px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
 
-ul {
-    list-style-type: disc;
-    margin-left: 20px;
-}
-</style>
+        .content {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .page-title {
+            color: #8B1538;
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #8B1538;
+            padding-bottom: 15px;
+        }
+
+        .intro {
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            color: #444;
+        }
+
+        .intro a {
+            color: #2E5233;
+            text-decoration: none;
+        }
+
+        .intro a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cohort sections */
+        .cohort {
+            margin-bottom: 32px;
+        }
+
+        .cohort h2 {
+            color: #8B1538;
+            font-size: 1.45rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            border-left: 4px solid #F5D800;
+            padding-left: 15px;
+        }
+
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 10px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .alumni-grid li {
+            padding: 10px 14px;
+            background: #f8f9ff;
+            border-radius: 6px;
+            border-left: 3px solid #2E5233;
+            font-size: 0.97rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .alumni-grid li .name {
+            font-weight: 600;
+            color: #222;
+        }
+
+        .alumni-grid li .name a {
+            color: #2E5233;
+            text-decoration: none;
+        }
+
+        .alumni-grid li .name a:hover {
+            text-decoration: underline;
+        }
+
+        .alumni-grid li .honor {
+            font-size: 0.85rem;
+            color: #8B1538;
+            font-style: italic;
+        }
+
+        .alumni-grid li .adviser {
+            font-size: 0.82rem;
+            color: #555;
+        }
+
+        .alumni-grid li .role {
+            font-size: 0.82rem;
+            color: #2E5233;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 25px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .alumni-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Systems Reseach Group Alumni</h1>
 
-<p>(With links to their LinkedIn profile if available. Those without specific adviser were advised by JACH.<br/> If you are an SRG alumnus, please add me to your LinkedIn: <a href="https://www.linkedin.com/in/jachermocilla/" target="_blank">https://www.linkedin.com/in/jachermocilla</a>)</p>
+    <header class="header">
+        <div class="header-content">
+            <img src="./logos/logo-white-background.png" class="logo" alt="ICS Logo">
+            <h1>Alumni</h1>
+        </div>
+    </header>
 
-<h2>January 2026</h2>
-<ul>
-    <li>Sean Kierby Concepcion</li>
-    <li>Andrea Aelan Cupido</li>
-    <li>Simoun Ezequiel Tusi</li>
-</ul>
+    <div class="main-container">
+        <div class="content">
 
+            <h1 class="page-title">Systems Research Group Alumni</h1>
 
-<h2>July 2025</h2>
-<ul>
-    <li>Uzziel Josh Abiday (cum laude)</li>
-    <li>Miguel Edward Bacolor (cum laude)</li>
-    <li>John Vincent Corcega (magna cum laude, Adviser: AJJacildo)</li>
-    <li>Beam Railey Damian (summa cum laude)</li>
-    <li>Van Paul Angelo Dayag</li>
-    <li>Melisse Deocareza (honor roll)</li>
-    <li>Frederick Emmanuel Estares (honor roll)</li>
-    <li>Brylle Felizardo</li>
-    <li>Chesedh Flauta (cum laude)</li>
-    <li>Gacel Perfinian (cum laude)</li>
-    <li>John Michael Raqueno (cum laude)</li>
+            <p class="intro">
+                With links to their LinkedIn profile if available. Those without a specific adviser were advised by JACH.<br>
+                If you are an SRG alumnus, please add me to your LinkedIn:
+                <a href="https://www.linkedin.com/in/jachermocilla/" target="_blank">https://www.linkedin.com/in/jachermocilla</a>
+            </p>
 
-</ul>
+            <!-- January 2026 -->
+            <div class="cohort">
+                <h2>January 2026</h2>
+                <ul class="alumni-grid">
+                    <li><span class="name">Sean Kierby Concepcion</span></li>
+                    <li><span class="name">Andrea Aelan Cupido</span></li>
+                    <li><span class="name">Simoun Ezequiel Tusi</span></li>
+                </ul>
+            </div>
 
-<h2>January 2025</h2>
-<ul>
-    <li>Lei Kristoffer R. Lactuan (faculty member, MIT)</li>
-    <li>Benedict Gabriel Sy (magna cum laude)</li>
-</ul>
+            <!-- July 2025 -->
+            <div class="cohort">
+                <h2>July 2025</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name">Uzziel Josh Abiday</span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name">Miguel Edward Bacolor</span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name">John Vincent Corcega</span>
+                        <span class="honor">magna cum laude</span>
+                        <span class="adviser">Adviser: AJJacildo</span>
+                    </li>
+                    <li>
+                        <span class="name">Beam Railey Damian</span>
+                        <span class="honor">summa cum laude</span>
+                    </li>
+                    <li><span class="name">Van Paul Angelo Dayag</span></li>
+                    <li>
+                        <span class="name">Melisse Deocareza</span>
+                        <span class="honor">honor roll</span>
+                    </li>
+                    <li>
+                        <span class="name">Frederick Emmanuel Estares</span>
+                        <span class="honor">honor roll</span>
+                    </li>
+                    <li><span class="name">Brylle Felizardo</span></li>
+                    <li>
+                        <span class="name">Chesedh Flauta</span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name">Gacel Perfinian</span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name">John Michael Raqueno</span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>August 2024</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/angelica-nicolette-adoptante-33083427a/">Angelica Nicolette Adoptante</a> (magna cum laude)</li>
-    <li>Albrave Raphael Albayda (honor roll)</li>
-    <li><a href="https://www.linkedin.com/in/nathaniel-enciso-8661b312/">Nathaniel Flores Enciso</a> (summa cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/jvesguerra19/">Joshua Esguerra</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/raul-gabriel-ludovico-3b791023b/">Raul Gabriel Ludovico</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/francmangio/">Franc Louie Mangio</a></li>
-    <li><a href="https://www.linkedin.com/in/benice-lyrem-joy-lim-4a1119170/">Benice Lyrem Joy Lim</a> (MS Chem, Adviser: Annabelle T. Abrera, Dr.nat.techn. )</li>
-</ul>
+            <!-- January 2025 -->
+            <div class="cohort">
+                <h2>January 2025</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name">Lei Kristoffer R. Lactuan</span>
+                        <span class="role">Faculty member, MIT</span>
+                    </li>
+                    <li>
+                        <span class="name">Benedict Gabriel Sy</span>
+                        <span class="honor">magna cum laude</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>January 2024</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/vincegelobuala10/">Vince Gelo DV. Buala</a> (summa cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/jeano-miguel-duhaylungsod-1488a5131/">Jeano Miguel I. Duhaylungsod</a> (magna cum laude)</li>
-</ul>
+            <!-- August 2024 -->
+            <div class="cohort">
+                <h2>August 2024</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/angelica-nicolette-adoptante-33083427a/" target="_blank">Angelica Nicolette Adoptante</a></span>
+                        <span class="honor">magna cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name">Albrave Raphael Albayda</span>
+                        <span class="honor">honor roll</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/nathaniel-enciso-8661b312/" target="_blank">Nathaniel Flores Enciso</a></span>
+                        <span class="honor">summa cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/jvesguerra19/" target="_blank">Joshua Esguerra</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/raul-gabriel-ludovico-3b791023b/" target="_blank">Raul Gabriel Ludovico</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/francmangio/" target="_blank">Franc Louie Mangio</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/benice-lyrem-joy-lim-4a1119170/" target="_blank">Benice Lyrem Joy Lim</a></span>
+                        <span class="honor">MS Chem</span>
+                        <span class="adviser">Adviser: Annabelle T. Abrera, Dr.nat.techn.</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>August 2023</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/juan-miguel-galvez-34a38b158/">Juan Miguel T. Galvez</a></li>
-    <li><a href="https://www.linkedin.com/in/mark-oliver-fojas-6b5735284/">Mark Oliver D. Fojas</a> (honor roll)</li>
-</ul>
+            <!-- January 2024 -->
+            <div class="cohort">
+                <h2>January 2024</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/vincegelobuala10/" target="_blank">Vince Gelo DV. Buala</a></span>
+                        <span class="honor">summa cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/jeano-miguel-duhaylungsod-1488a5131/" target="_blank">Jeano Miguel I. Duhaylungsod</a></span>
+                        <span class="honor">magna cum laude</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>July 2023</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/xyrkfabula/">Jonahlee Xyrkcysz A. Fabula</a> (magna cum laude)</li>
-</ul>
+            <!-- August 2023 -->
+            <div class="cohort">
+                <h2>August 2023</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/juan-miguel-galvez-34a38b158/" target="_blank">Juan Miguel T. Galvez</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/mark-oliver-fojas-6b5735284/" target="_blank">Mark Oliver D. Fojas</a></span>
+                        <span class="honor">honor roll</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>June 2022</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/marie-betel-de-robles-96826777/">Marie Betel B. de Robles</a> (faculty member, MSCS)</li>
-    <li>Miyah Q. Joya (faculty member, MSCS)</li>
-    <li><a href="https://www.linkedin.com/in/abigail-nadua/">Abigail Nadua</a> (magna cum laude, Adviser: MBBdR)</li>
-    <li><a href="https://www.linkedin.com/in/racarlos1/">Robie Carlos</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/cvpua/">Carl Vincent Pua</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/apjavier2/">Angela Beatriz Javier</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/jezreel-mae-estares-8178121b0/">Jezreel Mae T. Estares</a> (magna cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/johnjosephmacalalad/">John Joseph E. Macalalad</a> (magna cum laude, Adviser: MDQ)</li>
-    <li><a href="https://www.linkedin.com/in/bien-christian-custodio-a8002a19a/">Bien Christian Custodio</a> (cum laude, Adviser: MBBdR)</li>
-    <li><a href="https://www.linkedin.com/in/knlabador/">Kristine Labador</a> (magna cum laude, Adviser: LKRL)</li>
-</ul>
+            <!-- July 2023 -->
+            <div class="cohort">
+                <h2>July 2023</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/xyrkfabula/" target="_blank">Jonahlee Xyrkcysz A. Fabula</a></span>
+                        <span class="honor">magna cum laude</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>February 2022</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/ceposerio/">Clinton E. Poserio</a> (faculty member)</li>
-</ul>
+            <!-- June 2022 -->
+            <div class="cohort">
+                <h2>June 2022</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/marie-betel-de-robles-96826777/" target="_blank">Marie Betel B. de Robles</a></span>
+                        <span class="role">Faculty member, MSCS</span>
+                    </li>
+                    <li>
+                        <span class="name">Miyah Q. Joya</span>
+                        <span class="role">Faculty member, MSCS</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/abigail-nadua/" target="_blank">Abigail Nadua</a></span>
+                        <span class="honor">magna cum laude</span>
+                        <span class="adviser">Adviser: MBBdR</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/racarlos1/" target="_blank">Robie Carlos</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/cvpua/" target="_blank">Carl Vincent Pua</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/apjavier2/" target="_blank">Angela Beatriz Javier</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/jezreel-mae-estares-8178121b0/" target="_blank">Jezreel Mae T. Estares</a></span>
+                        <span class="honor">magna cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/johnjosephmacalalad/" target="_blank">John Joseph E. Macalalad</a></span>
+                        <span class="honor">magna cum laude</span>
+                        <span class="adviser">Adviser: MDQ</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/bien-christian-custodio-a8002a19a/" target="_blank">Bien Christian Custodio</a></span>
+                        <span class="honor">cum laude</span>
+                        <span class="adviser">Adviser: MBBdR</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/knlabador/" target="_blank">Kristine Labador</a></span>
+                        <span class="honor">magna cum laude</span>
+                        <span class="adviser">Adviser: LKRL</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>April 2021</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/atmatawaran/">Ana Marion Matawaran</a></li>
-    <li><a href="https://www.linkedin.com/in/emmanuelle-salvino-7690021a1/">Emmanuelle Salvino</a></li>
-</ul>
+            <!-- February 2022 -->
+            <div class="cohort">
+                <h2>February 2022</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ceposerio/" target="_blank">Clinton E. Poserio</a></span>
+                        <span class="role">Faculty member</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>February 2021</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/ccstemplado/">Christopher Claude S. Templado</a> (faculty member)</li>
-</ul>
+            <!-- April 2021 -->
+            <div class="cohort">
+                <h2>April 2021</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/atmatawaran/" target="_blank">Ana Marion Matawaran</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/emmanuelle-salvino-7690021a1/" target="_blank">Emmanuelle Salvino</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>December 2019</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/kiasomabes/">Kia Mae Somabes</a></li>
-    <li>Clark Almazan</li>
-    <li>Paul Munsayac</li>
-    <li><a href="https://www.linkedin.com/in/dmdelarosa/">Dyanara M. Dela Rosa</a> (faculty member)</li>
-</ul>
+            <!-- February 2021 -->
+            <div class="cohort">
+                <h2>February 2021</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ccstemplado/" target="_blank">Christopher Claude S. Templado</a></span>
+                        <span class="role">Faculty member</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>June 2019</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/jerico-agustin-336615139/">Jerico Agustin</a></li>
-    <li><a href="https://www.linkedin.com/in/radicalralph/">David Ralph Benavidez</a></li>
-    <li><a href="https://www.linkedin.com/in/emmanuel-jr-quiachon-85a093158/">Emmanuel Quiachon Jr.</a></li>
-    <li><a href="https://www.linkedin.com/in/charles-jo-marquez/">Charles Jo Marquez</a></li>
-</ul>
+            <!-- December 2019 -->
+            <div class="cohort">
+                <h2>December 2019</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/kiasomabes/" target="_blank">Kia Mae Somabes</a></span>
+                    </li>
+                    <li><span class="name">Clark Almazan</span></li>
+                    <li><span class="name">Paul Munsayac</span></li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/dmdelarosa/" target="_blank">Dyanara M. Dela Rosa</a></span>
+                        <span class="role">Faculty member</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>June 2018</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/drio-donna-892271151/">Donnalyn Drio</a> (faculty member)</li>
-    <li><a href="https://www.linkedin.com/in/ken-m-bb5b281ab/">Ken Mercado</a></li>
-    <li><a href="https://www.linkedin.com/in/andreadi-papica/">Andrea Di Papica</a></li>
-    <li><a href="https://www.linkedin.com/in/andrea-danelle-quilang-764194348/">Andrea Danelle Quilang</a></li>
-</ul>
+            <!-- June 2019 -->
+            <div class="cohort">
+                <h2>June 2019</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/jerico-agustin-336615139/" target="_blank">Jerico Agustin</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/radicalralph/" target="_blank">David Ralph Benavidez</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/emmanuel-jr-quiachon-85a093158/" target="_blank">Emmanuel Quiachon Jr.</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/charles-jo-marquez/" target="_blank">Charles Jo Marquez</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>August 2017</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/ivyjoyaguila/">Ivy Joy U. Aguila</a> (faculty member)</li>
-</ul>
+            <!-- June 2018 -->
+            <div class="cohort">
+                <h2>June 2018</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/drio-donna-892271151/" target="_blank">Donnalyn Drio</a></span>
+                        <span class="role">Faculty member</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ken-m-bb5b281ab/" target="_blank">Ken Mercado</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/andreadi-papica/" target="_blank">Andrea Di Papica</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/andrea-danelle-quilang-764194348/" target="_blank">Andrea Danelle Quilang</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>December 2016</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/vincent-carpio-462849139/">Vincent Paul L. Carpio</a> (co-advised with <a href="https://www.linkedin.com/in/katrina-joy-abriol-santos-53504136/">Katrina Joy M. Abriol-Santos</a>)</li>
-</ul>
+            <!-- August 2017 -->
+            <div class="cohort">
+                <h2>August 2017</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ivyjoyaguila/" target="_blank">Ivy Joy U. Aguila</a></span>
+                        <span class="role">Faculty member</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>July 2016</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/rahmat-peter-dabalos-289848137/">Rahmat Peter I. Dabalos</a> (co-advised with Lanie R. Danila)</li>
-</ul>
+            <!-- December 2016 -->
+            <div class="cohort">
+                <h2>December 2016</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/vincent-carpio-462849139/" target="_blank">Vincent Paul L. Carpio</a></span>
+                        <span class="adviser">Co-advised with <a href="https://www.linkedin.com/in/katrina-joy-abriol-santos-53504136/" target="_blank">Katrina Joy M. Abriol-Santos</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>April 2014</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/veftapang/">Vince Eric F. Tapang</a></li>
-    <li><a href="https://www.linkedin.com/in/fritz-derick-seeckts-b2440251/">Fritz Derick E. Seeckts</a></li>
-</ul>
+            <!-- July 2016 -->
+            <div class="cohort">
+                <h2>July 2016</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/rahmat-peter-dabalos-289848137/" target="_blank">Rahmat Peter I. Dabalos</a></span>
+                        <span class="adviser">Co-advised with Lanie R. Danila</span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>April 2013</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/ajgbangug/">Aristotle Joseph G. Bangug</a></li>
-    <li><a href="https://www.linkedin.com/in/ninzz/">Nino R. Eclarin</a></li>
-    <li><a href="https://www.linkedin.com/in/jasper-sibayan-14475550/">Jasper A. Sibayan</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/mjstecson/">Melvin Joseph S. Tecson</a></li>
-    <li><a href="https://www.linkedin.com/in/nicole-tibay-707282137/">Nicole I. Tibay</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/wilbertverayin/">Wilbert G. Verayin</a></li>
-</ul>
+            <!-- April 2014 -->
+            <div class="cohort">
+                <h2>April 2014</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/veftapang/" target="_blank">Vince Eric F. Tapang</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/fritz-derick-seeckts-b2440251/" target="_blank">Fritz Derick E. Seeckts</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>April 2012</h2>
-<ul>
-    <li>Korinto Miguel G. Aguinaldo</li>
-    <li>Sheila Kathleen L. Borja (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/shenlenecabigting/">Shenlene A. Cabigting</a> (cum laude)</li>
-    <li><a href="https://www.linkedin.com/in/ligcasan/">Lara Angelique S. Igcasan</a></li>
-    <li><a href="https://www.linkedin.com/in/ara-macasaet-6516487b/">Luisse Margarette A. Macasaet</a></li>
-    <li><a href="https://www.linkedin.com/in/baron-manzano-29956610a/">Baron Gerarld SD. Manzano</a></li>
-    <li><a href="https://www.linkedin.com/in/mikaelanadinnesilapan/">Mikaela Nadinne A. Silapan</a></li>
-    <li><a href="https://www.linkedin.com/in/kastolentino/">Karen Anne S. Tolentino</a></li>
-</ul>
+            <!-- April 2013 -->
+            <div class="cohort">
+                <h2>April 2013</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ajgbangug/" target="_blank">Aristotle Joseph G. Bangug</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ninzz/" target="_blank">Nino R. Eclarin</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/jasper-sibayan-14475550/" target="_blank">Jasper A. Sibayan</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/mjstecson/" target="_blank">Melvin Joseph S. Tecson</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/nicole-tibay-707282137/" target="_blank">Nicole I. Tibay</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/wilbertverayin/" target="_blank">Wilbert G. Verayin</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>April 2011</h2>
-<ul>
-    <li>Regelyn T. Banacia</li>
-    <li>Chryss Ann A. Belaguin (cum laude)</li>
-    <li>Lei Kristoffer R. Lactuan</li>
-    <li><a href="https://www.linkedin.com/in/gasapladev/">Glenn Allen B. Sapla</a></li>
-</ul>
+            <!-- April 2012 -->
+            <div class="cohort">
+                <h2>April 2012</h2>
+                <ul class="alumni-grid">
+                    <li><span class="name">Korinto Miguel G. Aguinaldo</span></li>
+                    <li>
+                        <span class="name">Sheila Kathleen L. Borja</span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/shenlenecabigting/" target="_blank">Shenlene A. Cabigting</a></span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ligcasan/" target="_blank">Lara Angelique S. Igcasan</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ara-macasaet-6516487b/" target="_blank">Luisse Margarette A. Macasaet</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/baron-manzano-29956610a/" target="_blank">Baron Gerarld SD. Manzano</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/mikaelanadinnesilapan/" target="_blank">Mikaela Nadinne A. Silapan</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/kastolentino/" target="_blank">Karen Anne S. Tolentino</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>December 2010</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/ginwenerueda/">Ginwene Rueda</a></li>
-    <li>Mary Angelique G. Galang</li>
-    <li><a href="https://www.linkedin.com/in/elizabeth-ruetas-5a0b60122/">Elizabeth D. Ruetas</a></li>
-</ul>
+            <!-- April 2011 -->
+            <div class="cohort">
+                <h2>April 2011</h2>
+                <ul class="alumni-grid">
+                    <li><span class="name">Regelyn T. Banacia</span></li>
+                    <li>
+                        <span class="name">Chryss Ann A. Belaguin</span>
+                        <span class="honor">cum laude</span>
+                    </li>
+                    <li><span class="name">Lei Kristoffer R. Lactuan</span></li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/gasapladev/" target="_blank">Glenn Allen B. Sapla</a></span>
+                    </li>
+                </ul>
+            </div>
 
-<h2>April 2010</h2>
-<ul>
-    <li><a href="https://www.linkedin.com/in/richard-christiensen-aluning/">Richard Christiensen E. Aluning</a></li>
-    <li><a href="https://www.linkedin.com/in/adora-alexis-cabuyadao-157b6474/">Adora Alexis B. Cabuyadao</a></li>
-    <li><a href="https://www.linkedin.com/in/mcaliston/">Mark Joseph G. Caliston</a></li>
-    <li>Jonathan Movillon (co-advised with Jaderick Pabico)</li>
-    <li><a href="https://www.linkedin.com/in/axel-trajano/">Axel S. Trajano</a></li>
-</ul>
+            <!-- December 2010 -->
+            <div class="cohort">
+                <h2>December 2010</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/ginwenerueda/" target="_blank">Ginwene Rueda</a></span>
+                    </li>
+                    <li><span class="name">Mary Angelique G. Galang</span></li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/elizabeth-ruetas-5a0b60122/" target="_blank">Elizabeth D. Ruetas</a></span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- April 2010 -->
+            <div class="cohort">
+                <h2>April 2010</h2>
+                <ul class="alumni-grid">
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/richard-christiensen-aluning/" target="_blank">Richard Christiensen E. Aluning</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/adora-alexis-cabuyadao-157b6474/" target="_blank">Adora Alexis B. Cabuyadao</a></span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/mcaliston/" target="_blank">Mark Joseph G. Caliston</a></span>
+                    </li>
+                    <li>
+                        <span class="name">Jonathan Movillon</span>
+                        <span class="adviser">Co-advised with Jaderick Pabico</span>
+                    </li>
+                    <li>
+                        <span class="name"><a href="https://www.linkedin.com/in/axel-trajano/" target="_blank">Axel S. Trajano</a></span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 </html>
