@@ -1,0 +1,119 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;700&display=swap');
+  .srg-wrap { font-family: 'Inter', sans-serif; background: #f9f9f7; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; }
+  .srg-topbar { background: #1a1a2e; padding: 6px 20px; display: flex; align-items: center; gap: 10px; }
+  .srg-logo-circle { width: 32px; height: 32px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #1a1a2e; flex-shrink: 0; }
+  .srg-topbar-text { font-size: 12px; color: #ccc; letter-spacing: 0.03em; }
+  .srg-topbar-text strong { color: #fff; font-weight: 500; }
+  .srg-header { background: #7b1113; padding: 24px 24px 20px; color: #fff; }
+  .srg-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #f5c6c7; margin: 0 0 6px; font-weight: 400; }
+  .srg-title { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 700; margin: 0 0 10px; color: #fff; line-height: 1.3; }
+  .srg-meta { font-size: 13px; color: #fde8e8; margin: 0; display: flex; gap: 16px; flex-wrap: wrap; }
+  .srg-body { padding: 16px; }
+  .srg-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #7b1113; font-weight: 600; margin: 16px 0 8px; border-left: 3px solid #7b1113; padding-left: 8px; }
+  .slot { display: grid; grid-template-columns: 68px 1fr; border: 1px solid #e0ddd5; border-radius: 8px; margin-bottom: 6px; overflow: hidden; background: #fff; }
+  .slot-time { padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #e0ddd5; }
+  .t-start { font-size: 12px; font-weight: 600; color: #1a1a2e; }
+  .t-end { font-size: 10px; color: #888; margin-top: 1px; }
+  .slot-body { padding: 10px 14px; }
+  .slot-top { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; flex-wrap: wrap; }
+  .badge { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; }
+  .b-opening { background: #fdeaea; color: #7b1113; border: 1px solid #f5c6c7; }
+  .b-pres { background: #e8f0fc; color: #1a3a6e; border: 1px solid #c5d5f5; }
+  .b-qa { background: #eaf4ee; color: #1a5c31; border: 1px solid #b5dcc2; }
+  .b-break { background: #f5f3ef; color: #555; border: 1px solid #ddd; }
+  .num-tag { font-size: 10px; color: #999; }
+  .slot-speakers { display: flex; align-items: center; gap: 6px; margin: 0 0 2px; flex-wrap: wrap; }
+  .slot-speaker { font-size: 13px; font-weight: 600; color: #1a1a2e; margin: 0; }
+  .speaker-divider { font-size: 11px; color: #bbb; font-weight: 400; }
+  .slot-title { font-size: 12px; color: #333; margin: 2px 0 0; line-height: 1.4; }
+  .slot-detail { font-size: 11px; color: #777; margin: 1px 0 0; }
+  .topic-pill { display: inline-block; margin-top: 4px; font-size: 10px; padding: 1px 8px; border-radius: 20px; background: #fff3e0; color: #7a4a00; border: 1px solid #f5c97a; }
+  .opening-slot .slot-time { background: #fef5f5; }
+  .pres-slot .slot-time { background: #f0f4fd; }
+  .qa-slot .slot-time { background: #f0f9f3; }
+  .break-slot { background: #f7f6f2; }
+  .break-slot .slot-time { background: #f0efeb; }
+  .break-name { color: #666 !important; font-style: italic; }
+  .srg-footer { background: #1a1a2e; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+  .srg-footer-left { font-size: 11px; color: #aaa; }
+  .srg-footer-right { font-size: 10px; color: #777; }
+</style>
+
+<div class="srg-wrap">
+  <h2 style="position:absolute;left:-9999px;">SRG Seminar: Cybersecurity and XAI, May 5 2026, EAA Lecture Hall, UPLB ICS</h2>
+  <div class="srg-topbar">
+    <div class="srg-topbar-text"><strong>Systems Research Group</strong> &nbsp;·&nbsp; UPLB Institute of Computer Science</div>
+  </div>
+  <div class="srg-header">
+    <p class="srg-eyebrow">Seminar</p>
+    <p class="srg-title">Cybersecurity and XAI</p>
+    <div class="srg-meta">
+      <span>&#128197; May 5, 2026</span>
+      <span>&#128336; 1:00 PM – 4:00 PM</span>
+      <span>&#128205; EAA Lecture Hall</span>
+    </div>
+  </div>
+  <div class="srg-body">
+    <div class="srg-section-label">Program</div>
+    <div id="slots"></div>
+  </div>
+  <div class="srg-footer">
+    <div class="srg-footer-left">&#169; 2026 Systems Research Group. All rights reserved.</div>
+    <div class="srg-footer-right">Institute of Computer Science &nbsp;|&nbsp; University of the Philippines Los Baños</div>
+  </div>
+</div>
+
+<script>
+const data = [
+  { type: 'opening', start: '1:00 PM', end: '1:20 PM', speakers: ['Joseph Anthony Hermocilla', 'John Michael Raqueno'], presTitle: 'Cybersecurity and XAI: Experiments with the NSL-KDD dataset', topic: 'XAI and Cyber' },
+  { type: 'pres', start: '1:20 PM', end: '1:30 PM', num: 1, speakers: ['Jesella Fermo'], presTitle: 'Explainable Lightweight AI Assistant for Detecting Privacy Leaks in Social Media Posts' },
+  { type: 'qa', start: '1:30 PM', end: '1:40 PM', num: 1, speakers: ['Jesella Fermo'], detail: 'Q&A' },
+  { type: 'pres', start: '1:40 PM', end: '1:50 PM', num: 2, speakers: ['Klenn Jakek Borja'], presTitle: 'NoEsc: A Comparative Analysis of Rule-Based and Machine Learning-Based Detection of Privilege Escalation in Linux Systems' },
+  { type: 'qa', start: '1:50 PM', end: '2:00 PM', num: 2, speakers: ['Klenn Jakek Borja'], detail: 'Q&A' },
+  { type: 'pres', start: '2:00 PM', end: '2:10 PM', num: 3, speakers: ['Eljohn Evangelista'], presTitle: 'Multi-class Classification of Web Payload Attacks Using CodeBERT with XAI Explanations' },
+  { type: 'qa', start: '2:10 PM', end: '2:20 PM', num: 3, speakers: ['Eljohn Evangelista'], detail: 'Q&A' },
+  { type: 'break', start: '2:20 PM', end: '2:30 PM', speakers: ['Break'], detail: '10-minute intermission' },
+  { type: 'pres', start: '2:30 PM', end: '2:40 PM', num: 4, speakers: ['Erix Laud Reyes'], presTitle: 'RINIG: An Explainable AI-Assisted, Low-Noise Web Application Reconnaissance Framework for Developer Assistance' },
+  { type: 'qa', start: '2:40 PM', end: '2:50 PM', num: 4, speakers: ['Erix Laud Reyes'], detail: 'Q&A' },
+  { type: 'pres', start: '2:50 PM', end: '3:00 PM', num: 5, speakers: ['John Benedict Aguirre'], presTitle: 'CyberEscape: Game-based Learning of Cybersecurity Concepts' },
+  { type: 'qa', start: '3:00 PM', end: '3:10 PM', num: 5, speakers: ['John Benedict Aguirre'], detail: 'Q&A' },
+  { type: 'break', start: '3:10 PM', end: '4:00 PM', speakers: ['Open floor / Wrap-up'], detail: 'Discussion, closing remarks, networking' },
+];
+
+const container = document.getElementById('slots');
+data.forEach(s => {
+  const div = document.createElement('div');
+  let cls = 'slot', badge = '', badgeCls = '';
+  if (s.type === 'opening') { cls += ' opening-slot'; badge = 'Opening'; badgeCls = 'b-opening'; }
+  else if (s.type === 'pres') { cls += ' pres-slot'; badge = 'Presentation'; badgeCls = 'b-pres'; }
+  else if (s.type === 'qa') { cls += ' qa-slot'; badge = 'Q&A'; badgeCls = 'b-qa'; }
+  else { cls += ' break-slot'; badge = 'Break'; badgeCls = 'b-break'; }
+
+  const numTag = s.num ? `<span class="num-tag">Presenter ${s.num}</span>` : '';
+  const isBreak = s.type === 'break';
+  const topicTag = s.topic ? `<div><span class="topic-pill">${s.topic}</span></div>` : '';
+  const titleTag = s.presTitle ? `<p class="slot-title">${s.presTitle}</p>` : '';
+  const detailTag = s.type === 'qa' ? `<p class="slot-detail">${s.detail}</p>` : (!s.presTitle && s.detail && s.type !== 'opening') ? `<p class="slot-detail">${s.detail}</p>` : '';
+
+  const speakersHtml = s.speakers.length > 1
+    ? `<div class="slot-speakers">${s.speakers.map((n, i) =>
+        `<span class="slot-speaker">${n}</span>${i < s.speakers.length - 1 ? '<span class="speaker-divider">&amp;</span>' : ''}`
+      ).join('')}</div>`
+    : `<p class="slot-speaker${isBreak ? ' break-name' : ''}">${s.speakers[0]}</p>`;
+
+  div.className = cls;
+  div.innerHTML = `
+    <div class="slot-time"><span class="t-start">${s.start}</span><span class="t-end">${s.end}</span></div>
+    <div class="slot-body">
+      <div class="slot-top"><span class="badge ${badgeCls}">${badge}</span>${numTag}</div>
+      ${speakersHtml}
+      ${titleTag}
+      ${detailTag}
+      ${topicTag}
+    </div>
+  `;
+  container.appendChild(div);
+});
+</script>
