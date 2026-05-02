@@ -1,119 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRG Seminar – Cybersecurity and XAI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;700&display=swap');
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;700&display=swap');
-  .srg-wrap { font-family: 'Inter', sans-serif; background: #f9f9f7; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; }
-  .srg-topbar { background: #1a1a2e; padding: 6px 20px; display: flex; align-items: center; gap: 10px; }
-  .srg-logo-circle { width: 32px; height: 32px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #1a1a2e; flex-shrink: 0; }
-  .srg-topbar-text { font-size: 12px; color: #ccc; letter-spacing: 0.03em; }
-  .srg-topbar-text strong { color: #fff; font-weight: 500; }
-  .srg-header { background: #7b1113; padding: 24px 24px 20px; color: #fff; }
-  .srg-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #f5c6c7; margin: 0 0 6px; font-weight: 400; }
-  .srg-title { font-family: 'Merriweather', serif; font-size: 22px; font-weight: 700; margin: 0 0 10px; color: #fff; line-height: 1.3; }
-  .srg-meta { font-size: 13px; color: #fde8e8; margin: 0; display: flex; gap: 16px; flex-wrap: wrap; }
-  .srg-body { padding: 16px; }
-  .srg-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #7b1113; font-weight: 600; margin: 16px 0 8px; border-left: 3px solid #7b1113; padding-left: 8px; }
-  .slot { display: grid; grid-template-columns: 68px 1fr; border: 1px solid #e0ddd5; border-radius: 8px; margin-bottom: 6px; overflow: hidden; background: #fff; }
-  .slot-time { padding: 12px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #e0ddd5; }
-  .t-start { font-size: 12px; font-weight: 600; color: #1a1a2e; }
-  .t-end { font-size: 10px; color: #888; margin-top: 1px; }
-  .slot-body { padding: 10px 14px; }
-  .slot-top { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; flex-wrap: wrap; }
-  .badge { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; }
-  .b-opening { background: #fdeaea; color: #7b1113; border: 1px solid #f5c6c7; }
-  .b-pres { background: #e8f0fc; color: #1a3a6e; border: 1px solid #c5d5f5; }
-  .b-qa { background: #eaf4ee; color: #1a5c31; border: 1px solid #b5dcc2; }
-  .b-break { background: #f5f3ef; color: #555; border: 1px solid #ddd; }
-  .num-tag { font-size: 10px; color: #999; }
-  .slot-speakers { display: flex; align-items: center; gap: 6px; margin: 0 0 2px; flex-wrap: wrap; }
-  .slot-speaker { font-size: 13px; font-weight: 600; color: #1a1a2e; margin: 0; }
-  .speaker-divider { font-size: 11px; color: #bbb; font-weight: 400; }
-  .slot-title { font-size: 12px; color: #333; margin: 2px 0 0; line-height: 1.4; }
-  .slot-detail { font-size: 11px; color: #777; margin: 1px 0 0; }
-  .topic-pill { display: inline-block; margin-top: 4px; font-size: 10px; padding: 1px 8px; border-radius: 20px; background: #fff3e0; color: #7a4a00; border: 1px solid #f5c97a; }
-  .opening-slot .slot-time { background: #fef5f5; }
-  .pres-slot .slot-time { background: #f0f4fd; }
-  .qa-slot .slot-time { background: #f0f9f3; }
-  .break-slot { background: #f7f6f2; }
-  .break-slot .slot-time { background: #f0efeb; }
-  .break-name { color: #666 !important; font-style: italic; }
-  .srg-footer { background: #1a1a2e; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
-  .srg-footer-left { font-size: 11px; color: #aaa; }
-  .srg-footer-right { font-size: 10px; color: #777; }
-</style>
+    *, *::before, *::after { box-sizing: border-box; }
 
-<div class="srg-wrap">
-  <h2 style="position:absolute;left:-9999px;">SRG Seminar: Cybersecurity and XAI, May 5 2026, EAA Lecture Hall, UPLB ICS</h2>
-  <div class="srg-topbar">
-    <div class="srg-topbar-text"><strong>Systems Research Group</strong> &nbsp;·&nbsp; UPLB Institute of Computer Science</div>
-  </div>
-  <div class="srg-header">
-    <p class="srg-eyebrow">Seminar</p>
-    <p class="srg-title">Cybersecurity and XAI</p>
-    <div class="srg-meta">
-      <span>&#128197; May 5, 2026</span>
-      <span>&#128336; 1:00 PM – 4:00 PM</span>
-      <span>&#128205; EAA Lecture Hall</span>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0efeb;
+      font-family: 'Inter', sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .srg-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #f9f9f7;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    @media (min-width: 700px) {
+      body { padding: 24px 16px; }
+      .srg-wrap { border-radius: 10px; border: 1px solid #ddd; min-height: unset; }
+    }
+
+    .srg-topbar {
+      background: #1a1a2e;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .srg-topbar-text { font-size: 11px; color: #ccc; letter-spacing: 0.03em; line-height: 1.5; }
+    .srg-topbar-text strong { color: #fff; font-weight: 500; }
+
+    .srg-header { background: #7b1113; padding: 20px 16px 16px; color: #fff; }
+
+    @media (min-width: 480px) {
+      .srg-header { padding: 24px 24px 20px; }
+    }
+
+    .srg-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #f5c6c7; margin: 0 0 6px; font-weight: 400; }
+
+    .srg-title { font-family: 'Merriweather', serif; font-size: 19px; font-weight: 700; margin: 0 0 10px; color: #fff; line-height: 1.3; }
+
+    @media (min-width: 480px) {
+      .srg-title { font-size: 22px; }
+    }
+
+    .srg-meta { font-size: 12px; color: #fde8e8; margin: 0; display: flex; gap: 8px 14px; flex-wrap: wrap; }
+
+    .srg-body { padding: 12px; }
+
+    @media (min-width: 480px) {
+      .srg-body { padding: 16px; }
+    }
+
+    .srg-section-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+      color: #7b1113; font-weight: 600; margin: 10px 0 8px;
+      border-left: 3px solid #7b1113; padding-left: 8px;
+    }
+
+    .slot {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      border: 1px solid #e0ddd5;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    @media (min-width: 400px) {
+      .slot { grid-template-columns: 68px 1fr; }
+    }
+
+    .slot-time {
+      padding: 12px 6px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      border-right: 1px solid #e0ddd5;
+      flex-shrink: 0;
+    }
+
+    .t-start { font-size: 11px; font-weight: 600; color: #1a1a2e; white-space: nowrap; }
+    .t-end { font-size: 10px; color: #888; margin-top: 2px; white-space: nowrap; }
+
+    @media (min-width: 400px) {
+      .t-start { font-size: 12px; }
+    }
+
+    .slot-body { padding: 9px 11px; min-width: 0; }
+
+    @media (min-width: 480px) {
+      .slot-body { padding: 10px 14px; }
+    }
+
+    .slot-top { display: flex; align-items: center; gap: 5px; margin-bottom: 3px; flex-wrap: wrap; }
+
+    .badge { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; white-space: nowrap; }
+    .b-opening { background: #fdeaea; color: #7b1113; border: 1px solid #f5c6c7; }
+    .b-pres { background: #e8f0fc; color: #1a3a6e; border: 1px solid #c5d5f5; }
+    .b-qa { background: #eaf4ee; color: #1a5c31; border: 1px solid #b5dcc2; }
+    .b-break { background: #f5f3ef; color: #555; border: 1px solid #ddd; }
+
+    .num-tag { font-size: 10px; color: #999; }
+
+    .slot-speakers { display: flex; align-items: center; gap: 5px; margin: 0 0 2px; flex-wrap: wrap; }
+    .slot-speaker { font-size: 13px; font-weight: 600; color: #1a1a2e; margin: 0; }
+    .speaker-divider { font-size: 11px; color: #bbb; font-weight: 400; }
+
+    .slot-title { font-size: 12px; color: #333; margin: 2px 0 0; line-height: 1.45; word-break: break-word; }
+    .slot-detail { font-size: 11px; color: #777; margin: 1px 0 0; }
+
+    .topic-pill {
+      display: inline-block; margin-top: 4px; font-size: 10px;
+      padding: 1px 8px; border-radius: 20px;
+      background: #fff3e0; color: #7a4a00; border: 1px solid #f5c97a;
+    }
+
+    .slides-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 6px; font-size: 11px; font-weight: 500;
+      color: #7b1113; text-decoration: none;
+      padding: 5px 11px;
+      border: 1px solid #f5c6c7; border-radius: 20px;
+      background: #fef5f5;
+      min-height: 30px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .slides-link:hover, .slides-link:active { background: #fdeaea; }
+    .slides-link svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+    .opening-slot .slot-time { background: #fef5f5; }
+    .pres-slot .slot-time { background: #f0f4fd; }
+    .qa-slot .slot-time { background: #f0f9f3; }
+    .break-slot { background: #f7f6f2; }
+    .break-slot .slot-time { background: #f0efeb; }
+    .break-name { color: #666 !important; font-style: italic; }
+
+    .srg-footer {
+      background: #1a1a2e;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    @media (min-width: 520px) {
+      .srg-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+    }
+
+    .srg-footer-left { font-size: 11px; color: #aaa; }
+    .srg-footer-right { font-size: 10px; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="srg-wrap">
+    <h2 style="position:absolute;left:-9999px;">SRG Seminar: Cybersecurity and XAI, May 5 2026, EAA Lecture Hall, UPLB ICS</h2>
+    <div class="srg-topbar">
+      <div class="srg-topbar-text"><strong>Systems Research Group</strong> &nbsp;·&nbsp; UPLB Institute of Computer Science</div>
+    </div>
+    <div class="srg-header">
+      <p class="srg-eyebrow">SRG Seminar</p>
+      <p class="srg-title">Cybersecurity and XAI</p>
+      <div class="srg-meta">
+        <span>&#128197; May 5, 2026</span>
+        <span>&#128336; 1:00 PM – 4:00 PM</span>
+        <span>&#128205; EAA Lecture Hall</span>
+      </div>
+    </div>
+    <div class="srg-body">
+      <div class="srg-section-label">Program</div>
+      <div id="slots"></div>
+    </div>
+    <div class="srg-footer">
+      <div class="srg-footer-left">&#169; 2026 Systems Research Group. All rights reserved.</div>
+      <div class="srg-footer-right">Institute of Computer Science &nbsp;|&nbsp; University of the Philippines Los Baños</div>
     </div>
   </div>
-  <div class="srg-body">
-    <div class="srg-section-label">Program</div>
-    <div id="slots"></div>
-  </div>
-  <div class="srg-footer">
-    <div class="srg-footer-left">&#169; 2026 Systems Research Group. All rights reserved.</div>
-    <div class="srg-footer-right">Institute of Computer Science &nbsp;|&nbsp; University of the Philippines Los Baños</div>
-  </div>
-</div>
 
-<script>
-const data = [
-  { type: 'opening', start: '1:00 PM', end: '1:20 PM', speakers: ['Joseph Anthony Hermocilla', 'John Michael Raqueno'], presTitle: 'Cybersecurity and XAI: Experiments with the NSL-KDD dataset' },
-  { type: 'pres', start: '1:20 PM', end: '1:30 PM', num: 1, speakers: ['Jesella Fermo'], presTitle: 'Explainable Lightweight AI Assistant for Detecting Privacy Leaks in Social Media Posts' },
-  { type: 'qa', start: '1:30 PM', end: '1:40 PM', num: 1, speakers: ['Jesella Fermo'], detail: 'Q&A' },
-  { type: 'pres', start: '1:40 PM', end: '1:50 PM', num: 2, speakers: ['Erix Laud Reyes'], presTitle: 'RINIG: An Explainable AI-Assisted, Low-Noise Web Application Reconnaissance Framework for Developer Assistance' },
-  { type: 'qa', start: '1:50 PM', end: '2:00 PM', num: 2, speakers: ['Erix Laud Reyes'], detail: 'Q&A' },
-  { type: 'pres', start: '2:00 PM', end: '2:10 PM', num: 3, speakers: ['Eljohn Evangelista'], presTitle: 'Multi-class Classification of Web Payload Attacks Using CodeBERT with XAI Explanations' },
-  { type: 'qa', start: '2:10 PM', end: '2:20 PM', num: 3, speakers: ['Eljohn Evangelista'], detail: 'Q&A' },
-  { type: 'break', start: '2:20 PM', end: '2:30 PM', speakers: ['Break'], detail: '10-minute intermission' },
-  { type: 'pres', start: '2:30 PM', end: '2:40 PM', num: 4, speakers: ['Klenn Jakek Borja'], presTitle: 'NoEsc: A Comparative Analysis of Rule-Based and Machine Learning-Based Detection of Privilege Escalation in Linux Systems' },
-  { type: 'qa', start: '2:40 PM', end: '2:50 PM', num: 4, speakers: ['Klenn Jakek Borja'], detail: 'Q&A' },
-  { type: 'pres', start: '2:50 PM', end: '3:00 PM', num: 5, speakers: ['John Benedict Aguirre'], presTitle: 'CyberEscape: Game-based Learning of Cybersecurity Concepts' },
-  { type: 'qa', start: '3:00 PM', end: '3:10 PM', num: 5, speakers: ['John Benedict Aguirre'], detail: 'Q&A' },
-  { type: 'break', start: '3:10 PM', end: '4:00 PM', speakers: ['Open floor / Wrap-up'], detail: 'Discussion, closing remarks, networking' },
-];
+  <script>
+  const slideIcon = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="2" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M6 14h4M8 12v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`;
 
-const container = document.getElementById('slots');
-data.forEach(s => {
-  const div = document.createElement('div');
-  let cls = 'slot', badge = '', badgeCls = '';
-  if (s.type === 'opening') { cls += ' opening-slot'; badge = 'Opening'; badgeCls = 'b-opening'; }
-  else if (s.type === 'pres') { cls += ' pres-slot'; badge = 'Presentation'; badgeCls = 'b-pres'; }
-  else if (s.type === 'qa') { cls += ' qa-slot'; badge = 'Q&A'; badgeCls = 'b-qa'; }
-  else { cls += ' break-slot'; badge = 'Break'; badgeCls = 'b-break'; }
+  const data = [
+    { type: 'opening', start: '1:00 PM', end: '1:20 PM', speakers: ['Joseph Anthony Hermocilla', 'John Michael Raqueno'], presTitle: 'Cybersecurity and XAI: Experiments with the NSL-KDD dataset', slides: '#' },
+    { type: 'pres', start: '1:20 PM', end: '1:30 PM', num: 1, speakers: ['Jesella Fermo'], presTitle: 'Explainable Lightweight AI Assistant for Detecting Privacy Leaks in Social Media Posts', slides: '#' },
+    { type: 'qa', start: '1:30 PM', end: '1:40 PM', num: 1, speakers: ['Jesella Fermo'], detail: 'Q&A' },
+    { type: 'pres', start: '1:40 PM', end: '1:50 PM', num: 2, speakers: ['Erix Laud Reyes'], presTitle: 'RINIG: An Explainable AI-Assisted, Low-Noise Web Application Reconnaissance Framework for Developer Assistance', slides: '#' },
+    { type: 'qa', start: '1:50 PM', end: '2:00 PM', num: 2, speakers: ['Erix Laud Reyes'], detail: 'Q&A' },
+    { type: 'pres', start: '2:00 PM', end: '2:10 PM', num: 3, speakers: ['Eljohn Evangelista'], presTitle: 'Multi-class Classification of Web Payload Attacks Using CodeBERT with XAI Explanations', slides: '#' },
+    { type: 'qa', start: '2:10 PM', end: '2:20 PM', num: 3, speakers: ['Eljohn Evangelista'], detail: 'Q&A' },
+    { type: 'break', start: '2:20 PM', end: '2:30 PM', speakers: ['Break'], detail: '10-minute intermission' },
+    { type: 'pres', start: '2:30 PM', end: '2:40 PM', num: 4, speakers: ['Klenn Jakek Borja'], presTitle: 'NoEsc: A Comparative Analysis of Rule-Based and Machine Learning-Based Detection of Privilege Escalation in Linux Systems', slides: '#' },
+    { type: 'qa', start: '2:40 PM', end: '2:50 PM', num: 4, speakers: ['Klenn Jakek Borja'], detail: 'Q&A' },
+    { type: 'pres', start: '2:50 PM', end: '3:00 PM', num: 5, speakers: ['John Benedict Aguirre'], presTitle: 'CyberEscape: Game-based Learning of Cybersecurity Concepts', slides: '#' },
+    { type: 'qa', start: '3:00 PM', end: '3:10 PM', num: 5, speakers: ['John Benedict Aguirre'], detail: 'Q&A' },
+    { type: 'break', start: '3:10 PM', end: '4:00 PM', speakers: ['Open floor / Wrap-up'], detail: 'Discussion, closing remarks, networking' },
+  ];
 
-  const numTag = s.num ? `<span class="num-tag">Presenter ${s.num}</span>` : '';
-  const isBreak = s.type === 'break';
-  const topicTag = s.topic ? `<div><span class="topic-pill">${s.topic}</span></div>` : '';
-  const titleTag = s.presTitle ? `<p class="slot-title">${s.presTitle}</p>` : '';
-  const detailTag = s.type === 'qa' ? `<p class="slot-detail">${s.detail}</p>` : (!s.presTitle && s.detail && s.type !== 'opening') ? `<p class="slot-detail">${s.detail}</p>` : '';
+  const container = document.getElementById('slots');
+  data.forEach(s => {
+    const div = document.createElement('div');
+    let cls = 'slot', badge = '', badgeCls = '';
+    if (s.type === 'opening') { cls += ' opening-slot'; badge = 'Opening'; badgeCls = 'b-opening'; }
+    else if (s.type === 'pres') { cls += ' pres-slot'; badge = 'Presentation'; badgeCls = 'b-pres'; }
+    else if (s.type === 'qa') { cls += ' qa-slot'; badge = 'Q&A'; badgeCls = 'b-qa'; }
+    else { cls += ' break-slot'; badge = 'Break'; badgeCls = 'b-break'; }
 
-  const speakersHtml = s.speakers.length > 1
-    ? `<div class="slot-speakers">${s.speakers.map((n, i) =>
-        `<span class="slot-speaker">${n}</span>${i < s.speakers.length - 1 ? '<span class="speaker-divider">&amp;</span>' : ''}`
-      ).join('')}</div>`
-    : `<p class="slot-speaker${isBreak ? ' break-name' : ''}">${s.speakers[0]}</p>`;
+    const numTag = s.num ? `<span class="num-tag">Presenter ${s.num}</span>` : '';
+    const isBreak = s.type === 'break';
+    const topicTag = s.topic ? `<div><span class="topic-pill">${s.topic}</span></div>` : '';
+    const titleTag = s.presTitle ? `<p class="slot-title">${s.presTitle}</p>` : '';
+    const slidesTag = s.slides ? `<div><a class="slides-link" href="${s.slides}">${slideIcon} Slides</a></div>` : '';
+    const detailTag = s.type === 'qa' ? `<p class="slot-detail">${s.detail}</p>` : (!s.presTitle && s.detail && s.type !== 'opening') ? `<p class="slot-detail">${s.detail}</p>` : '';
 
-  div.className = cls;
-  div.innerHTML = `
-    <div class="slot-time"><span class="t-start">${s.start}</span><span class="t-end">${s.end}</span></div>
-    <div class="slot-body">
-      <div class="slot-top"><span class="badge ${badgeCls}">${badge}</span>${numTag}</div>
-      ${speakersHtml}
-      ${titleTag}
-      ${detailTag}
-      ${topicTag}
-    </div>
-  `;
-  container.appendChild(div);
-});
-</script>
+    const speakersHtml = s.speakers.length > 1
+      ? `<div class="slot-speakers">${s.speakers.map((n, i) =>
+          `<span class="slot-speaker">${n}</span>${i < s.speakers.length - 1 ? '<span class="speaker-divider">&amp;</span>' : ''}`
+        ).join('')}</div>`
+      : `<p class="slot-speaker${isBreak ? ' break-name' : ''}">${s.speakers[0]}</p>`;
+
+    div.className = cls;
+    div.innerHTML = `
+      <div class="slot-time"><span class="t-start">${s.start}</span><span class="t-end">${s.end}</span></div>
+      <div class="slot-body">
+        <div class="slot-top"><span class="badge ${badgeCls}">${badge}</span>${numTag}</div>
+        ${speakersHtml}
+        ${titleTag}
+        ${detailTag}
+        ${topicTag}
+        ${slidesTag}
+      </div>
+    `;
+    container.appendChild(div);
+  });
+  </script>
+</body>
+</html>
