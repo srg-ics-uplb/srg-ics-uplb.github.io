@@ -164,6 +164,39 @@
             text-decoration: none;
         }
 
+        .student-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .people-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .people-list li {
+            position: relative;
+            padding: 6px 0 6px 18px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .people-list li::before {
+            content: "▸";
+            color: #8B1538;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .people-list a {
+            color: #2E5233;
+        }
+
+        .people-list a:hover {
+            text-decoration: underline;
+        }
+
         .person-card {
             background: linear-gradient(135deg, #f8f9ff, #f0f4f1);
             border-radius: 15px;
@@ -548,6 +581,11 @@
             
             .people-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .student-columns {
+                grid-template-columns: 1fr;
+                gap: 0;
             }
             
             .news-content {

@@ -65,11 +65,12 @@ PAGE_SAVE_AS = "{slug}.html"
 DRAFT_SAVE_AS = ""
 DRAFT_PAGE_SAVE_AS = ""
 
-DIRECT_TEMPLATES = ["index", "news", "seminars", "alumni", "404", "sitemap"]
+DIRECT_TEMPLATES = ["index", "news", "seminars", "alumni", "publications", "404", "sitemap"]
 INDEX_SAVE_AS = "index.html"
 NEWS_SAVE_AS = "news.html"
 SEMINARS_SAVE_AS = "seminars.html"
 ALUMNI_SAVE_AS = "alumni.html"
+PUBLICATIONS_SAVE_AS = "publications.html"
 PAGINATED_TEMPLATES = {}
 DEFAULT_PAGINATION = False
 
@@ -99,6 +100,7 @@ SITEMAP_PAGES = [
     "collab.html",
     "cs-specialization.html",
     "seminars/2026/01_cyber_xai.html",
+    "publications.html",
 ]
 BUILD_DATE = datetime.date.today().isoformat()
 

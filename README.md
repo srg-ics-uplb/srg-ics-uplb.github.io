@@ -6,10 +6,11 @@ Source for https://srg-ics-uplb.github.io, built with [Pelican](https://getpelic
 
 | To change… | Edit |
 |---|---|
-| Faculty and students (People) | `data/people.yml` |
+| Faculty, and the Graduate/Undergraduate Students name lists (People) | `data/people.yml` |
 | Home page tagline and About text | `data/site.yml` |
 | Research areas (and their collaborators: people or institutions) | `data/research.yml` |
-| Recent publications | `data/publications.yml` |
+| Selected publications (home page) | `data/publications.yml` |
+| Full publications list (publications.html) | `data/publications_all.yml`, refresh with `.venv/bin/python tools/fetch_publications.py` |
 | Courses | `data/courses.yml` |
 | Join Us section | `data/join.yml` |
 | Resources section | `data/resources.yml` |

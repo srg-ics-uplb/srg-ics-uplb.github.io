@@ -28,3 +28,19 @@
   - name: Iravan G. Gesmundo
     photo: images/people/iravan.webp
     interests: Biosecurity
+
+# Student groups: names only, shown side by side (graduate left, undergraduate right).
+# A group stays hidden until it has at least one name.
+- group: Graduate Students
+  style: list
+  members: []
+  # members:
+  #   - name: Juan Dela Cruz
+  #   - name: Maria Santos
+  #     href: https://example.com    # optional link
+
+
+
+- group: Undergraduate Students
+  style: list
+  members: []          # same format as Graduate Students

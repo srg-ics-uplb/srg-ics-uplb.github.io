@@ -1,0 +1,49 @@
+{#- Full publications list, from data/publications_all.yml (tools/fetch_publications.py). -#}
+{% extends "base.html" %}
+{% import '_macros.html' as m with context %}
+{% set page_title = "Publications | Systems Research Group | UPLB Institute of Computer Science" %}
+{% set og_title = "Publications | Systems Research Group" %}
+{% set page_description = "Publications by Systems Research Group faculty, students, and alumni at the UPLB Institute of Computer Science." %}
+{% set page_path = "publications.html" %}
+{% set page_css = "news" %}
+{% set page_js = "news" %}
+
+{% block head_extra %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/publications.css">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {{ m.card_header(SITENAME, SRG.site.tagline, active='Publications') }}
+
+    <section class="section">
+        <h2>Publications</h2>
+        <p class="publications-intro">Publications by Systems Research Group faculty, students, and alumni. Group members are shown in <strong>bold</strong>.</p>
+{% for year, items in SRG.publications_all | groupby('year') | sort(reverse=True) %}
+
+        <div class="year-section">
+            <div class="year-header">{{ year }}</div>
+{% for pub in items %}
+            <div class="publication-item">
+                <div class="publication-title">{{ pub.title }}</div>
+                <div class="publication-meta">
+                    <span class="publication-authors">{% for a in pub.authors %}{% if a.srg %}<strong class="srg-author">{{ a.name }}</strong>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+                    <span class="publication-sep">·</span>
+                    <span class="publication-venue">{{ pub.venue }}</span>
+                </div>
+{% if pub.links %}
+                <div class="publication-links">
+{% for l in pub.links %}
+                    <a href="{{ l.url }}" target="_blank" rel="noopener">[{{ l.label }}]</a>
+{% endfor %}
+                </div>
+{% endif %}
+            </div>
+{% endfor %}
+        </div>
+{% endfor %}
+    </section>
+
+    {{ m.footer() }}
+</div>
+{% endblock %}

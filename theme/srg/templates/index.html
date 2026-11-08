@@ -92,7 +92,7 @@
 
     <section id="people" class="section">
         <h2>People</h2>
-{% for group in SRG.people %}
+{% for group in SRG.people if group.style != 'list' and group.members %}
         <h3 style="color: #8B1538; font-size: 2rem; margin-bottom: 20px; margin-top: {{ '30px' if loop.first else '40px' }};">{{ group.group }}</h3>
         <div class="people-grid">
 {% for p in group.members %}
@@ -111,6 +111,22 @@
 {% endfor %}
         </div>
 {% endfor %}
+{% set student_groups = SRG.people | selectattr('style', 'equalto', 'list') | selectattr('members') | list %}
+{% if student_groups %}
+
+        <div class="student-columns">
+{% for group in student_groups %}
+            <div class="student-column">
+                <h3 style="color: #8B1538; font-size: 2rem; margin-bottom: 20px; margin-top: 40px;">{{ group.group }}</h3>
+                <ul class="people-list">
+{% for p in group.members %}
+                    <li>{% if p.href %}<a href="{{ m.url(p.href) }}" target="_blank" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</li>
+{% endfor %}
+                </ul>
+            </div>
+{% endfor %}
+        </div>
+{% endif %}
 
         <div style="text-align: center; margin-top: 30px;">
             <a href="{{ SITEURL }}/alumni.html" class="resource-link" style="display: inline-block; max-width: 300px;">
@@ -133,7 +149,7 @@
         </div>
 {% endfor %}
         <div style="text-align: center; margin-top: 30px;">
-            <a href="{{ SRG.publications.all_url }}" class="resource-link" style="display: inline-block; max-width: 300px;">
+            <a href="{{ m.url(SRG.publications.all_url) }}" class="resource-link" style="display: inline-block; max-width: 300px;">
                 <h4>📄 View All Publications</h4>
                 <p>Complete list of all publications from the Systems Research Group</p>
             </a>
