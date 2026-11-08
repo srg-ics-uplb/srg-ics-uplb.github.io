@@ -28,6 +28,9 @@
   - name: Iravan G. Gesmundo
     photo: images/people/iravan.webp
     interests: Biosecurity
+  - name: Moh. Al-Fadhel D. Cali
+    photo: images/people/owen.webp
+    interests: Computer Networks
 
 # Student groups: names only, shown side by side (graduate left, undergraduate right).
 # A group stays hidden until it has at least one name.
