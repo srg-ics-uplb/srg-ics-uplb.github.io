@@ -1,0 +1,9 @@
+# robots.txt for srg-ics-uplb.github.io
+# This file applies to the whole domain, including /blog/ and course sites.
+User-agent: *
+Allow: /
+Disallow: /samples/
+Disallow: /index_new.html
+Disallow: /index_old.html
+
+Sitemap: https://srg-ics-uplb.github.io/sitemap.xml

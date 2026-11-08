@@ -165,7 +165,7 @@
         .nav {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -559,7 +559,11 @@
             }
             
             .nav {
-                gap: 15px;
+                gap: 4px;
+            }
+
+            .nav a {
+                padding: 6px 12px;
             }
             
             .section {
@@ -588,14 +592,17 @@
             <img class="logo-placeholder" src="./logos/logo-white-background.png" alt="SRG logo" />
             <h1>Systems Research Group @ UPLB ICS</h1>
             <p>Operating Systems::Computer Networks::Distributed Systems::Security</p>
-            <nav class="nav">
-                <a href="">Home</a>
-                <a href="news.html">News</a>
+            <nav class="nav" aria-label="Main">
+                <a href="./">Home</a>
                 <a href="#about">About</a>
                 <a href="#people">People</a>
                 <a href="#research">Research</a>
                 <a href="#publications">Publications</a>
                 <a href="#courses">Courses</a>
+                <a href="seminars.html">Seminars</a>
+                <a href="news.html">News</a>
+                <a href="alumni.html">Alumni</a>
+                <a href="#join">Join Us</a>
                 <a href="#resources">Resources</a>
                 <a href="https://srg-ics-uplb.github.io/blog/">Blog</a>
             </nav>
@@ -778,6 +785,21 @@
                     <p>Theory and practice in modern distributed systems.</p>
                 </div>
            </div>
+        </section>
+
+        <section id="join" class="section">
+            <h2>Join Us</h2>
+            <p>Interested in systems research? SRG welcomes BS and MS students who want to do their thesis or special problem in operating systems, networks, distributed systems, cybersecurity, or IoT/robotics. Check the faculty research interests above, then email the faculty member whose work matches yours, or contact the group at <a href="mailto:jchermocilla@up.edu.ph">jchermocilla@up.edu.ph</a>.</p>
+            <div class="resource-links">
+                <a href="https://github.com/srg-ics-uplb/systems-track-primer" class="resource-link" target="_blank" rel="noopener">
+                    <h4>📚 Systems Reading List</h4>
+                    <p>A primer of readings to get started in systems research.</p>
+                </a>
+                <a href="collab.html" class="resource-link">
+                    <h4>🤝 Collaborate with Us</h4>
+                    <p>Opportunities for academic, industry, and public sector partners.</p>
+                </a>
+            </div>
         </section>
 
         <section id="resources" class="section">
