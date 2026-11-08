@@ -1,0 +1,29 @@
+{#- Stand-alone page for one news item (news/<slug>.html). -#}
+{% extends "base.html" %}
+{% import '_macros.html' as m with context %}
+{% set page_title = article.title ~ " | News | Systems Research Group" %}
+{% set og_title = article.title %}
+{% set og_type = "article" %}
+{% set page_description = article.summary | striptags | truncate(200) %}
+{% set page_path = article.url %}
+{% set page_css = "news" %}
+{% set page_js = "news" %}
+
+{% block body %}
+<div class="container">
+    {{ m.card_header(SITENAME, SRG.site.tagline, active='News') }}
+
+    <section class="section">
+        <h2>News</h2>
+        <div class="year-section">
+{% set share_href = SITE_ABS_URL ~ '/' ~ article.url %}
+{% include '_news_item.html' %}
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <p><a href="{{ SITEURL }}/news.html">← All news</a></p>
+        </div>
+    </section>
+
+    {{ m.footer() }}
+</div>
+{% endblock %}

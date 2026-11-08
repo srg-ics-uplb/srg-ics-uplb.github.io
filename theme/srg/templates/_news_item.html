@@ -1,0 +1,26 @@
+{#- One news card. Expects `article` and `share_href` in scope. -#}
+<div class="news-item{% if article.featured == 'true' %} featured-news{% endif %}" id="{{ article.slug }}">
+    <div class="news-content">
+        <div class="news-text">
+            <h3 class="news-title">{{ article.title }}</h3>
+            <div class="news-date">{{ article.locale_date }}</div>
+            <div class="news-description">
+                {{ article.content }}
+            </div>
+            <div class="news-meta">
+                <a href="{{ share_href }}">🔗 Share</a>
+{% if article.label %}
+                <span>•</span>
+                <span>{{ article.label }}</span>
+{% endif %}
+            </div>
+        </div>
+{% if article.image %}
+        <div class="news-placeholder">
+            <img class="news-image" src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.image_alt }}" loading="lazy" />
+        </div>
+{% elif article.icon %}
+        <div class="news-placeholder">{{ article.icon }}</div>
+{% endif %}
+    </div>
+</div>

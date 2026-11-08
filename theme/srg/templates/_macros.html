@@ -1,0 +1,71 @@
+{#- Shared pieces. Import with:  {% import '_macros.html' as m with context %} -#}
+
+{#- Turn a link from the data files into a URL that works from any page. -#}
+{% macro url(href) -%}
+{%- if not href or href.startswith('#') or href.startswith('mailto:') or '://' in href -%}
+{{ href }}
+{%- else -%}
+{{ SITEURL }}/{{ href }}
+{%- endif -%}
+{%- endmacro %}
+
+{#- target/rel attributes for links that open in a new tab. -#}
+{% macro new_tab(item) -%}
+{%- if item.new_tab %} target="_blank" rel="noopener"{% endif -%}
+{%- endmacro %}
+
+{#- Main menu. `active` is the menu label to highlight; `on_home` keeps
+    section links as in-page anchors (needed for smooth scrolling). -#}
+{% macro nav(active=None, on_home=False) %}
+<nav class="nav" aria-label="Main">
+{% for label, target in SRG_MENU %}
+{% if target == 'home' %}
+{% set href = './' if on_home else SITEURL ~ '/index.html' %}
+{% elif target.startswith('#') %}
+{% set href = target if on_home else SITEURL ~ '/index.html' ~ target %}
+{% else %}
+{% set href = url(target) %}
+{% endif %}
+    <a href="{{ href }}"{% if label == active %} class="active" aria-current="page"{% endif %}>{{ label }}</a>
+{% endfor %}
+</nav>
+{% endmacro %}
+
+{#- Card-style header used by the home, news and seminars pages. -#}
+{% macro card_header(title, tagline=None, logo=True, active=None, on_home=False) %}
+<header class="header">
+{% if logo %}
+    <img class="logo-placeholder" src="{{ SITEURL }}/logos/logo-white-background.png" alt="SRG logo" />
+{% endif %}
+    <h1>{{ title }}</h1>
+{% if tagline %}
+    <p>{{ tagline }}</p>
+{% endif %}
+    {{ nav(active, on_home) }}
+</header>
+{% endmacro %}
+
+{% macro footer() %}
+<footer class="footer">
+    <p>&copy; {{ CURRENT_YEAR }} Systems Research Group. All rights reserved.</p>
+    <p>Contact: <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a></p>
+    <p><a href="https://ics.uplb.edu.ph">Institute of Computer Science</a> | <a href="https://cas.uplb.edu.ph">College of Arts and Sciences</a> | <a href="https://uplb.edu.ph">University of the Philippines Los Baños</a></p>
+</footer>
+{% endmacro %}
+
+{#- A clickable card when it has a link, a plain card otherwise. -#}
+{% macro card_open(item, cls, extra_attrs='') -%}
+{%- if item.href -%}
+<a href="{{ url(item.href) }}" class="{{ cls }}"{{ new_tab(item) }}{{ extra_attrs }}>
+{%- else -%}
+<div class="{{ cls }}"{{ extra_attrs }}>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro card_close(item) -%}
+{%- if item.href %}</a>{% else %}</div>{% endif -%}
+{%- endmacro %}
+
+{% macro longdate(iso) -%}
+{{ iso | longdate }}
+{%- endmacro %}

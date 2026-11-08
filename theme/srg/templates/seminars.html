@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% import '_macros.html' as m with context %}
+{% set page_title = "Seminars and Talks | Systems Research Group | UPLB Institute of Computer Science" %}
+{% set og_title = "Seminars and Talks | Systems Research Group" %}
+{% set page_description = "Seminars and talks hosted by the Systems Research Group at UPLB ICS." %}
+{% set page_path = "seminars.html" %}
+{% set page_css = "seminars" %}
+{% set page_js = "seminars" %}
+
+{% block body %}
+<div class="container">
+    {{ m.card_header("Seminars and Talks", logo=False, active='Seminars') }}
+
+    <section class="section past-item">
+{% for s in SRG.seminars | sort(attribute='date', reverse=True) %}
+{% set n = loop.revindex %}
+        <div class="seminar-item" id="{{ s.id }}">
+            <div class="seminar-header">
+                <div class="seminar-info">
+                    <h3>{{ s.title }}</h3>
+                    <div class="seminar-speaker">{{ s.speaker }}</div>
+                    <div class="seminar-affiliation">{{ s.affiliation }}</div>
+                    <div class="seminar-datetime">📅 {{ s.date | longdate }} | 🕐 {{ s.time }} | 📍 {{ s.venue }}</div>
+                </div>
+{% if s.poster %}
+                <a href="{{ m.url(s.poster) }}" class="poster-link" title="View Poster">
+                    🏥
+                </a>
+{% else %}
+                <span class="poster-link" title="No poster">
+                    🏥
+                </span>
+{% endif %}
+            </div>
+            <div class="collapsible-buttons">
+                <button class="collapsible-btn" onclick="toggleCollapsible(this, 'abstract{{ n }}')">Abstract</button>
+                <button class="collapsible-btn" onclick="toggleCollapsible(this, 'bio{{ n }}')">Speaker Bio</button>
+                <button class="share-btn" onclick="shareItem('{{ s.id }}')">🔗 Share</button>
+            </div>
+
+            <div id="abstract{{ n }}" class="collapsible-content">
+                <div class="collapsible-inner">
+                    <h4>Abstract</h4>
+                    <p>{{ s.abstract }}</p>
+                </div>
+            </div>
+            <div id="bio{{ n }}" class="collapsible-content">
+                <div class="collapsible-inner">
+                    <h4>Speaker Biography</h4>
+                    <p>{{ s.bio }}</p>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+        <!-- Share notification -->
+        <div id="shareNotification" class="share-notification">
+            Link copied to clipboard!
+        </div>
+    </section>
+
+    {{ m.footer() }}
+</div>
+{% endblock %}

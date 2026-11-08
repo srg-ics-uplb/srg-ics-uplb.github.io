@@ -1,0 +1,27 @@
+- group: Senior Faculty
+  members:
+  - name: Joseph Anthony C. Hermocilla (Group Leader)
+    href: https://jachermocilla.org
+    photo: images/people/jach.webp
+    interests: Operating Systems, Computer Networks, Security
+  - name: Danilo J. Mercado
+    photo: images/people/danny.webp
+    interests: Internet Security, Distributed Systems, Drones
+  - name: Jaderick P. Pabico
+    href: https://sites.google.com/up.edu.ph/jppabico
+    photo: images/people/jade.webp
+    interests: Parallel and Distributed Computing
+  - name: John Patrick VJ. Albacea
+    photo: images/people/patrick.webp
+    interests: Internet of Things, Robotics, Security
+- group: Junior Faculty
+  members:
+  - name: John Michael R. Raqueño
+    photo: images/people/jomi.webp
+    interests: Operating Systems, Computer Networks, Security
+  - name: Leonard Paul A. Garchitorena
+    photo: images/people/garchi.webp
+    interests: Operating Systems, Computer Networks, Security
+  - name: Shanmykel Ace S. Dela Cruz
+    photo: images/people/shan.webp
+    interests: Computer Networks

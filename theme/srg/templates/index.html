@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% import '_macros.html' as m with context %}
+{% set page_title = "Systems Research Group | UPLB Institute of Computer Science - Operating Systems, Networks, Security" %}
+{% set page_description = "Systems Research Group at UPLB Institute of Computer Science specializes in operating systems, computer networks, distributed systems, and cybersecurity research. Led by faculty experts in cloud computing and autonomous systems." %}
+{% set og_title = "Systems Research Group | UPLB Institute of Computer Science" %}
+{% set og_description = "Leading research in operating systems, computer networks, distributed systems, and cybersecurity at University of the Philippines Los Banos." %}
+{% set twitter_card = "summary_large_image" %}
+{% set page_path = "" %}
+{% set page_css = "index" %}
+{% set page_js = "index" %}
+
+{% block extra_meta %}
+    <meta name="keywords" content="systems research, operating systems, computer networks, distributed systems, cybersecurity, UPLB, University of the Philippines Los Banos, computer science, cloud computing, autonomous systems">
+    <meta name="author" content="Systems Research Group, UPLB ICS">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="twitter:title" content="{{ og_title }}">
+    <meta name="twitter:description" content="{{ og_description }}">
+    <meta name="twitter:image" content="{{ SITE_ABS_URL }}/logos/logo-white-background.png">
+{% endblock %}
+
+{% block head_extra %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ResearchOrganization",
+        "name": "Systems Research Group",
+        "alternateName": "SRG-ICS-UPLB",
+        "description": "Research group focusing on operating systems, computer networks, distributed systems, and cybersecurity at UPLB Institute of Computer Science",
+        "url": "{{ SITE_ABS_URL }}/",
+        "logo": "{{ SITE_ABS_URL }}/logos/logo-white-background.png",
+        "parentOrganization": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of the Philippines Los Banos",
+            "url": "https://uplb.edu.ph"
+        },
+        "department": {
+            "@type": "Organization",
+            "name": "Institute of Computer Science",
+            "url": "https://ics.uplb.edu.ph"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "{{ CONTACT_EMAIL }}",
+            "contactType": "Academic"
+        },
+        "knowsAbout": [
+            "Operating Systems",
+            "Computer Networks",
+            "Distributed Systems",
+            "Cybersecurity",
+            "Cloud Computing",
+            "Autonomous Systems"
+        ]
+    }
+    </script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {{ m.card_header(SITENAME, SRG.site.tagline, on_home=True) }}
+
+    <section id="about" class="section">
+        <h2>About</h2>
+{% for para in SRG.site.about %}
+        <p>{{ para }}</p>
+{% endfor %}
+    </section>
+
+    <section id="people" class="section">
+        <h2>People</h2>
+{% for group in SRG.people %}
+        <h3 style="color: #8B1538; font-size: 2rem; margin-bottom: 20px; margin-top: {{ '30px' if loop.first else '40px' }};">{{ group.group }}</h3>
+        <div class="people-grid">
+{% for p in group.members %}
+            {{ m.card_open(p, 'person-card') }}
+{% if p.photo %}
+                <img class="avatar" src="{{ m.url(p.photo) }}" alt="{{ p.name }}" width="80" height="80" loading="lazy">
+{% endif %}
+                <h3>{{ p.name }}</h3>
+{% if p.title %}
+                <p><strong>{{ p.title }}</strong></p>
+{% endif %}
+{% if p.interests %}
+                <p>{{ p.interests }}</p>
+{% endif %}
+            {{ m.card_close(p) }}
+{% endfor %}
+        </div>
+{% endfor %}
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="{{ SITEURL }}/alumni.html" class="resource-link" style="display: inline-block; max-width: 300px;">
+                <h4>🎓 Alumni</h4>
+                <p>Former members of the Systems Research Group</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="research" class="section">
+        <h2>Research</h2>
+        <p>{{ SRG.research.intro }}</p>
+        <div class="research-areas">
+{% for area in SRG.research.areas %}
+            <div class="research-card">
+                <h3>{{ area.title }}</h3>
+                <p>{{ area.text }}</p>
+            </div>
+{% endfor %}
+        </div>
+    </section>
+
+    <section id="publications" class="section">
+        <h2>Recent Publications</h2>
+{% for pub in SRG.publications['items'] %}
+        <div class="publication-item">
+            <div class="publication-title">{{ pub.title }}</div>
+            <div class="publication-authors">{{ pub.authors }}</div>
+            <div class="publication-venue">{{ pub.venue }}</div>
+        </div>
+{% endfor %}
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="{{ SRG.publications.all_url }}" class="resource-link" style="display: inline-block; max-width: 300px;">
+                <h4>📄 View All Publications</h4>
+                <p>Complete list of all publications from the Systems Research Group</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="courses" class="section">
+        <h2>Courses</h2>
+        <div class="course-grid">
+{% for c in SRG.courses %}
+            {{ m.card_open(c, 'course-card') }}
+                <div class="course-code">{{ c.code }}</div>
+                <h3>{{ c.title }}</h3>
+                <p>{{ c.description }}</p>
+            {{ m.card_close(c) }}
+{% endfor %}
+        </div>
+    </section>
+
+    <section id="join" class="section">
+        <h2>Join Us</h2>
+        <p>{{ SRG.join.intro }}</p>
+        <div class="resource-links">
+{% for c in SRG.join.cards %}
+            {{ m.card_open(c, 'resource-link') }}
+                <h4>{{ c.title }}</h4>
+                <p>{{ c.description }}</p>
+            {{ m.card_close(c) }}
+{% endfor %}
+        </div>
+    </section>
+
+    <section id="resources" class="section">
+        <h2>Resources</h2>
+        <div class="resource-links">
+{% for c in SRG.resources %}
+            {{ m.card_open(c, 'resource-link') }}
+                <h4>{{ c.title }}</h4>
+                <p>{{ c.description }}</p>
+            {{ m.card_close(c) }}
+{% endfor %}
+        </div>
+    </section>
+
+    {{ m.footer() }}
+</div>
+{% endblock %}

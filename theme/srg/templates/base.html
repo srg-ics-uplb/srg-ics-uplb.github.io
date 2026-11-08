@@ -1,0 +1,41 @@
+{#-
+  Base layout. Child templates set these at the top (before any block):
+    page_title, page_description, page_path ('' for the home page), page_css,
+    and optionally og_title, og_type, twitter_card, page_js.
+-#}
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+{% if page_description %}
+    <meta name="description" content="{{ page_description }}">
+{% endif %}
+{% block extra_meta %}{% endblock %}
+{% if page_description %}
+    <meta property="og:title" content="{{ og_title or page_title }}">
+    <meta property="og:description" content="{{ og_description or page_description }}">
+    <meta property="og:type" content="{{ og_type or 'website' }}">
+    <meta property="og:url" content="{{ SITE_ABS_URL }}/{{ page_path }}">
+    <meta property="og:image" content="{{ SITE_ABS_URL }}/logos/logo-white-background.png">
+    <meta property="og:site_name" content="Systems Research Group - UPLB ICS">
+    <meta name="twitter:card" content="{{ twitter_card or 'summary' }}">
+    <link rel="canonical" href="{{ SITE_ABS_URL }}/{{ page_path }}">
+{% endif %}
+    <link rel="icon" type="image/png" href="{{ SITEURL }}/logos/logo-white-background.png">
+{% if FEED_ATOM %}
+    <link rel="alternate" type="application/atom+xml" title="SRG News" href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}">
+{% endif %}
+{% block head_extra %}{% endblock %}
+{% if page_css %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ page_css }}.css">
+{% endif %}
+</head>
+<body>
+{% block body %}{% endblock %}
+{% if page_js %}
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/{{ page_js }}.js"></script>
+{% endif %}
+</body>
+</html>

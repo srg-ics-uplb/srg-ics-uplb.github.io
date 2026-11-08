@@ -1,0 +1,40 @@
+- id: cybersecurity-xai
+  title: Cybersecurity and XAI
+  speaker: <i>(Multiple Presenters)</i>
+  affiliation: ''
+  date: '2026-05-05'
+  time: 1:00 PM-4:00 PM
+  venue: EAA Lecture Hall
+  poster: ''
+  abstract: This seminar is a collection of presentations focusing on Cybersecurity and XAI topics from SRG members. (<a href="https://srg-ics-uplb.github.io/seminars/2026/01_cyber_xai.html">Full Program</a>)
+  bio: ''
+- id: seminar-tech-career-japan
+  title: 'Hacking the Future: Building a Global Tech Career in Japan'
+  speaker: Mark Jay Nicolas
+  affiliation: Software Enginner
+  date: '2025-02-13'
+  time: 2:00 PM
+  venue: EAA Lecture Hall
+  poster: ./images/seminars/srg-seminar_2025-02-13_jay.png
+  abstract: (TBA)
+  bio: Mark Jay is a UPLB BS Computer Science graduate (Class of 2019) who built his career in software engineering and cybersecurity. After moving to Japan, he started as a penetration test engineer, later transitioning to security operations, where he developed SOAR solutions with Python and automated workflows using Ansible. In March 2024, he joined Early Reflections as a software engineer, contributing to in-house product development, contract projects, and R&D.
+- id: seminar-beyond-coding
+  title: 'Beyond Coding: Future Proofing your Career with Cybersecurity'
+  speaker: Erika Thea Ajes
+  affiliation: Software Engineer
+  date: '2024-11-29'
+  time: 2:00 PM
+  venue: EAA Lecture Hall
+  poster: ./images/seminars/srg-seminar_2024-11-29_thea.png
+  abstract: (TBA)
+  bio: With a strong background in backend engineering, Thea has successfully led small teams, collaborated with clients, and managed complex migration projects. She recently earned a one-year master’s degree in Applied Cybersecurity from the University of New Brunswick (UNB), Canada. Currently, she is advancing her cybersecurity expertise as a Cybersecurity Developer Intern at the Canadian Institute for Cybersecurity (CIC), with research focusing on password modeling and generative AI.
+- id: seminar-white-box
+  title: White-box Pentesting Fundamentals
+  speaker: Nathan Xavier Golez
+  affiliation: Cybersecurity Enthusiast
+  date: '2024-05-16'
+  time: 2:00 PM
+  venue: SMA Lecture Hall
+  poster: ./images/seminars/srg-seminar_2024-05-16_nathan.png
+  abstract: (TBA)
+  bio: Nathan is a 20-year-old Filipino cybersecurity enthusiast based in Abu Dhabi, United Arab Emirates, focusing on secure software development and vulnerability research. He holds industry certifications including Offensive Security Certified Professional (OSCP) and CompTIA Network Security Professional (CNSP). His contributions extend to software security research, including playing a pivotal role in discovering multiple CVEs within the privacy-centric Brave Browser.

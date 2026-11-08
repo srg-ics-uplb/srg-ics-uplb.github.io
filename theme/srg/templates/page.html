@@ -1,0 +1,24 @@
+{#- Generic content page (content/pages/*.md), in the collaboration page's style.
+    Front matter: Title, Description, and optionally Heading (header text). -#}
+{% extends "base.html" %}
+{% import '_macros.html' as m with context %}
+{% set page_title = page.title ~ " | Systems Research Group" %}
+{% set page_description = page.description %}
+{% set page_path = page.url %}
+{% set page_css = "collab" %}
+
+{% block body %}
+<header class="header">
+    <div class="header-content">
+        <img src="{{ SITEURL }}/logos/logo-white-background.png" class="logo" alt="SRG logo">
+        <h1>{{ page.heading or page.title }}</h1>
+    </div>
+</header>
+
+<div class="main-container">
+    {{ m.nav(page.menu_label) }}
+    <div class="content">
+{{ page.content }}
+    </div>
+</div>
+{% endblock %}

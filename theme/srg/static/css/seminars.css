@@ -1,0 +1,340 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Optima', 'Palatino', 'Avenir', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8B1538 0%, #2E5233 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #8B1538;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .seminar-item {
+            background: linear-gradient(135deg, #f8f9ff, #f0f4f1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #8B1538;
+            transition: all 0.3s ease;
+        }
+
+        .seminar-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .seminar-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .seminar-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .seminar-speaker {
+            font-size: 1.1rem;
+            color: #8B1538;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .seminar-affiliation {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .seminar-datetime {
+            font-size: 0.9rem;
+            color: #2E5233;
+            font-weight: 500;
+        }
+
+        .poster-link {
+            width: 80px;
+            height: 100px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .poster-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+.collapsible-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.share-btn {
+    background: linear-gradient(135deg, #0A6836, #2E5233);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.share-btn:hover {
+    background: linear-gradient(135deg, #2E5233, #0A6836);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.share-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #0A6836, #2E5233);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.share-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+        .collapsible-btn {
+            background: linear-gradient(135deg, #8B1538, #2E5233);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .collapsible-btn:hover {
+            background: linear-gradient(135deg, #2E5233, #8B1538);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .collapsible-btn.active {
+            background: linear-gradient(135deg, #0A6836, #2E5233);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .collapsible-content.active {
+            max-height: 500px;
+        }
+
+        .collapsible-inner {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid rgba(139, 21, 56, 0.1);
+        }
+
+        .collapsible-inner h4 {
+            color: #8B1538;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .collapsible-inner p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .upcoming-badge {
+            background: linear-gradient(135deg, #F5D800, #FF6B35);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .past-item {
+            opacity: 0.8;
+        }
+
+        .past-item .seminar-item {
+            background: linear-gradient(135deg, #f5f5f5, #f0f0f0);
+            border-left-color: #999;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #0A6836;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #8B1538;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                gap: 4px;
+            }
+
+            .nav a {
+                padding: 6px 12px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .seminar-header {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .poster-link {
+                width: 100%;
+                height: 120px;
+            }
+            
+            .collapsible-buttons {
+                flex-wrap: wrap;
+            }
+        }

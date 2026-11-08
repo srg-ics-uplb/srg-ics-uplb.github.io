@@ -1,0 +1,9 @@
+intro: Interested in systems research? SRG welcomes BS and MS students who want to do their thesis or special problem in operating systems, networks, distributed systems, cybersecurity, or IoT/robotics. Check the faculty research interests above, then email the faculty member whose work matches yours, or contact the group at <a href="mailto:jchermocilla@up.edu.ph">jchermocilla@up.edu.ph</a>.
+cards:
+- title: 📚 Systems Reading List
+  description: A primer of readings to get started in systems research.
+  href: https://github.com/srg-ics-uplb/systems-track-primer
+  new_tab: true
+- title: 🤝 Collaborate with Us
+  description: Opportunities for academic, industry, and public sector partners.
+  href: collab.html

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import '_macros.html' as m with context %}
+{% set page_title = "Alumni | Systems Research Group" %}
+{% set page_description = "Former members and thesis advisees of the Systems Research Group, UPLB ICS." %}
+{% set page_path = "alumni.html" %}
+{% set page_css = "alumni" %}
+
+{% block body %}
+<header>
+    <img src="{{ SITEURL }}/logos/logo-white-background.png" alt="SRG logo">
+    <h1>Alumni</h1>
+</header>
+
+<main>
+    {{ m.nav('Alumni') }}
+    <h1 class="page-title">Systems Research Group Alumni</h1>
+
+    <p class="intro">
+        {{ SRG.alumni.intro }}
+    </p>
+{% for cohort in SRG.alumni.cohorts %}
+
+    <div class="cohort">
+        <h2>{{ cohort.cohort }}</h2>
+        <ul class="alumni-list">
+{% for g in cohort.graduates %}
+            <li>
+                <span class="name">{% if g.link %}<a href="{{ g.link }}" target="_blank" rel="noopener">{{ g.name }}</a>{% else %}{{ g.name }}{% endif %}</span>
+{% for h in g.honors or [] %}
+                <span class="honor">{{ h }}</span>
+{% endfor %}
+{% if g.role %}
+                <span class="role">{{ g.role }}</span>
+{% endif %}
+{% if g.adviser %}
+                <span class="adviser">{{ g.adviser }}</span>
+{% endif %}
+            </li>
+{% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+
+</main>
+{% endblock %}

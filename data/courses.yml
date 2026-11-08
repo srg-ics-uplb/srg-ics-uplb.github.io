@@ -1,0 +1,42 @@
+- code: CMSC 125
+  title: Operating Systems
+  description: Processor management, memory management, file and disk management, resource management, concurrent processes, networks and distributed systems.
+  href: https://srg-ics-uplb.github.io/cmsc125
+  new_tab: true
+- code: CMSC 137
+  title: Data Communications and Networking
+  description: Basic principles of data communications; design issues and protocols in the layers of data network; networks for various applications.
+  href: https://srg-ics-uplb.github.io/cmsc137
+  new_tab: true
+- code: CMSC 180
+  title: Introduction to Parallel Computing
+  description: Equips students with the conceptual and practical foundations of Parallel and Distributed Computing (PDC).
+  href: https://sites.google.com/up.edu.ph/parallel-computing/instruction/cmsc-180
+  new_tab: true
+- code: CMSC 191 (Special Topics)
+  title: Cybersecurity
+  description: Concepts in protecting computer systems and networks from attacks.
+  href: https://srg-ics-uplb.github.io/cmsc191cybersecurity
+  new_tab: true
+- code: CMSC 215
+  title: Advanced Computer Systems
+  description: Advanced topics in OS, Computer Networks, and Distributed Systems.
+  href: https://srg-ics-uplb.github.io/cmsc215/
+- code: CMSC 280
+  title: Parallel Processing
+  description: Parallelize computationally intensive problems across diverse domains such as numerical linear algebra, graph analytics, combinatorial optimization, dynamic programming, and spectral methods
+  href: https://sites.google.com/up.edu.ph/parallel-computing/instruction/cmsc-280
+  new_tab: true
+- code: IT 238
+  title: Networking and Client/Server Computing
+  description: Client/Server computing techniques and applications.
+  href: https://srg-ics-uplb.github.io/it238/
+  new_tab: true
+- code: IT 280
+  title: Internet Security
+  description: Challenges and approaches to secure the Internet.
+  href: https://srg-ics-uplb.github.io/it280/
+  new_tab: true
+- code: CMSC 291 (Special Topics)
+  title: Modern Distributed Systems
+  description: Theory and practice in modern distributed systems.

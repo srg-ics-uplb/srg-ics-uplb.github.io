@@ -1,0 +1,16 @@
+{#- Rendered to sitemap.xml (SITEMAP_SAVE_AS). Direct templates must end in .html. -#}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for path in SITEMAP_PAGES %}
+  <url>
+    <loc>{{ SITE_ABS_URL }}/{{ path }}</loc>
+    <lastmod>{{ BUILD_DATE }}</lastmod>
+  </url>
+{% endfor %}
+{% for article in articles %}
+  <url>
+    <loc>{{ SITE_ABS_URL }}/{{ article.url }}</loc>
+    <lastmod>{{ (article.modified or article.date).strftime('%Y-%m-%d') }}</lastmod>
+  </url>
+{% endfor %}
+</urlset>
