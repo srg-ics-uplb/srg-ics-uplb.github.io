@@ -2,7 +2,7 @@
   description: Information about collaboration opportunities, internships, and visiting researcher programs.
   href: collab.html
 - title: 🎥 Seminars and Talks
-  description: Invited talks and Reading Group Presentations
+  description: Invited talks and reading group presentations.
   href: seminars.html
 - title: 🛠️ Software and Tools
   description: Open-source tools and frameworks developed by our group for system development and research.
@@ -11,10 +11,10 @@
 - title: 📊 Datasets
   description: Performance benchmarks, trace data, and experimental datasets used in our research projects.
 - title: 📖 Technical Reports
-  description: Detailed technical reports and white papers documenting our research methodology and findings. Search for the <strong>lastname</strong> of our members, past and present.
+  description: Detailed technical reports and white papers documenting our research methodology and findings. Search for the <strong>last name</strong> of our members, past and present.
   href: https://lib.ics.uplb.edu.ph
   new_tab: true
 - title: 📚 Reading List
-  description: Curated collection of essential textbooks, conferences, workshops, journals. professional organizations in systems research.
+  description: Curated collection of essential textbooks, conferences, workshops, journals, and professional organizations in systems research.
   href: https://github.com/srg-ics-uplb/systems-track-primer
   new_tab: true

@@ -11,7 +11,7 @@
 intro: Our research addresses fundamental challenges in modern computing systems, with a focus on scalability, reliability, and performance. We work on both theoretical foundations and practical system implementations.
 areas:
 - title: Computing Infrastructures
-  text: We design and build computing infrastructures and tools to support high performance and high throughput computing for use in various computational science disciplines, in particular Bioinformatics and Computational Chemistry.
+  text: We design and build computing infrastructures and tools to support high-performance and high-throughput computing for use in various computational science disciplines, in particular bioinformatics and computational chemistry.
   collaborators:
     - name: UPLB Institute of Chemistry
     - name: UPLB Cinterlabs   
@@ -19,10 +19,10 @@ areas:
 - title: Robotics and Instrumentation
   collaborators:
     - name: UPLB Robotics and Instrumentation Studies Center (RISC)
-  text: We develop tools to support autonomous navigation in drones and surface water vehicles. We also develop sensors and associated software for sensing various environmental parameters.
+  text: We develop tools to support autonomous navigation of drones and surface water vehicles. We also develop sensors and associated software for sensing various environmental parameters.
 - title: Cybersecurity
   collaborators:
     - name: UPLB Digital Innovation Center (DIC)
   text: We study systems and networks to determine if they are vulnerable to exploitation. We develop tools for mitigating threats.
 - title: Computer Science Education
-  text: We develop tools and techniques to further improve teaching and learning of operating systems, computer networks and other systems topics.
+  text: We develop tools and techniques to further improve teaching and learning of operating systems, computer networks, and other systems topics.

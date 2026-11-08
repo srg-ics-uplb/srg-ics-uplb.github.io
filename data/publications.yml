@@ -7,11 +7,14 @@ items:
   venue: KIMIKA, 33(1), 2022
 - title: Design and implementation of an autonomous surface vehicle platform for water quality monitoring
   authors: Miyah D. Queliste, Joseph Anthony C. Hermocilla, and Jaderick P. Pabico
-  venue: Proceedings of the 20th Philippine Computing Science Congress (PCSC 2020), pages 14--25, Philippines, March 2020
+  venue: Proceedings of the 20th Philippine Computing Science Congress (PCSC 2020), pages 14–25, Philippines, March 2020
 - title: Characterization and classification of malware traffic over the tor network
   authors: Marie Betel B. de Robles, Joseph Anthony C. Hermocilla, and Jaderick P. Pabico
-  venue: Proceedings of the 20th Philippine Computing Science Congress (PCSC 2020), pages 78--87, Philippines, March 2020
+  venue: Proceedings of the 20th Philippine Computing Science Congress (PCSC 2020), pages 78–87, Philippines, March 2020
 - title: A memetic algorithm for generating spectral indices for remotely sensed imagery
-  authors: Ivan Marc H. Escamos, Maria Art Antonette D. Clarino, Joseph Anthony C. Hermocilla, Jaderick P. Pabico, and Cristino L. Tiburan Jr
+  authors: Ivan Marc H. Escamos, Maria Art Antonette D. Clarino, Joseph Anthony C. Hermocilla, Jaderick P. Pabico, and Cristino L. Tiburan Jr.
   venue: Proceedings of the 40th Asian Conference on Remote Sensing (ACRS 2019), October 2019
+- title: Exploring rssi for uav-to-gcs distance estimation
+  authors: Guia Carmela B. Lara, Joseph Anthony C. Hermocilla, and Danilo J. Mercado
+  venue: Proceedings of the 15th National Conference on Information Technology Education (NCITE 2017)
 all_url: https://jachermocilla.org/publications/
