@@ -32,14 +32,12 @@ SRG = {p.stem: yaml.safe_load(p.read_text(encoding="utf-8")) for p in sorted(_DA
 # `section` links point at an anchor on the home page; `page` links are site pages.
 SRG_MENU = [
     ("Home", "home"),
-    ("About", "#about"),
-    ("People", "#people"),
     ("Research", "#research"),
+    ("People", "#people"),
     ("Publications", "#publications"),
     ("Courses", "#courses"),
     ("Seminars", "seminars.html"),
     ("News", "news.html"),
-    ("Alumni", "alumni.html"),
     ("Join Us", "#join"),
     ("Resources", "#resources"),
     ("Blog", "https://srg-ics-uplb.github.io/blog/"),

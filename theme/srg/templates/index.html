@@ -67,6 +67,19 @@
 {% endfor %}
     </section>
 
+    <section id="research" class="section">
+        <h2>Research</h2>
+        <p>{{ SRG.research.intro }}</p>
+        <div class="research-areas">
+{% for area in SRG.research.areas %}
+            <div class="research-card">
+                <h3>{{ area.title }}</h3>
+                <p>{{ area.text }}</p>
+            </div>
+{% endfor %}
+        </div>
+    </section>
+
     <section id="people" class="section">
         <h2>People</h2>
 {% for group in SRG.people %}
@@ -94,19 +107,6 @@
                 <h4>🎓 Alumni</h4>
                 <p>Former members of the Systems Research Group</p>
             </a>
-        </div>
-    </section>
-
-    <section id="research" class="section">
-        <h2>Research</h2>
-        <p>{{ SRG.research.intro }}</p>
-        <div class="research-areas">
-{% for area in SRG.research.areas %}
-            <div class="research-card">
-                <h3>{{ area.title }}</h3>
-                <p>{{ area.text }}</p>
-            </div>
-{% endfor %}
         </div>
     </section>
 
