@@ -240,6 +240,45 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
+        .research-collaborators {
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .research-collaborators h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #8B1538;
+            margin-bottom: 6px;
+        }
+
+        .research-collaborators ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .research-collaborators li {
+            margin-bottom: 6px;
+        }
+
+        .research-collaborators li a,
+        .research-collaborators .collaborator-name {
+            font-weight: 600;
+            color: #2E5233;
+        }
+
+        .research-collaborators li a:hover {
+            text-decoration: underline;
+        }
+
+        .research-collaborators .affiliation {
+            display: block;
+            font-size: 0.82rem;
+            color: #666;
+        }
+
         .research-card h3 {
             color: #8B1538;
             margin-bottom: 15px;

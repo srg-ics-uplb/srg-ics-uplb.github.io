@@ -75,6 +75,16 @@
             <div class="research-card">
                 <h3>{{ area.title }}</h3>
                 <p>{{ area.text }}</p>
+{% if area.collaborators %}
+                <div class="research-collaborators">
+                    <h4>Collaborators</h4>
+                    <ul>
+{% for c in area.collaborators %}
+                        <li>{% if c.link %}<a href="{{ c.link }}" target="_blank" rel="noopener">{{ c.name }}</a>{% else %}<span class="collaborator-name">{{ c.name }}</span>{% endif %}{% if c.affiliation %}<span class="affiliation">{{ c.affiliation }}</span>{% endif %}</li>
+{% endfor %}
+                    </ul>
+                </div>
+{% endif %}
             </div>
 {% endfor %}
         </div>

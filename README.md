@@ -8,7 +8,7 @@ Source for https://srg-ics-uplb.github.io, built with [Pelican](https://getpelic
 |---|---|
 | Faculty and students (People) | `data/people.yml` |
 | Home page tagline and About text | `data/site.yml` |
-| Research areas | `data/research.yml` |
+| Research areas (and their collaborators: people or institutions) | `data/research.yml` |
 | Recent publications | `data/publications.yml` |
 | Courses | `data/courses.yml` |
 | Join Us section | `data/join.yml` |
