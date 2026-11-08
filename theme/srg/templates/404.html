@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Systems Research Group</title>
     <meta name="robots" content="noindex">
-    <link rel="icon" type="image/png" href="/logos/logo-white-background.png">
-    <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/404.css">
+    <link rel="icon" type="image/png" href="{{ SITE_ROOT_PATH }}/logos/logo-white-background.png">
+    <link rel="stylesheet" href="{{ SITE_ROOT_PATH }}/{{ THEME_STATIC_DIR }}/css/404.css">
 </head>
 <body>
     <main class="card">
-        <img src="/logos/logo-white-background.png" alt="SRG logo" width="96" height="96">
+        <img src="{{ SITE_ROOT_PATH }}/logos/logo-white-background.png" alt="SRG logo" width="96" height="96">
         <div class="code">404</div>
         <h1>Page not found</h1>
         <p>The page you're looking for doesn't exist or may have moved.</p>
         <nav class="links" aria-label="Helpful links">
-            <a href="/">SRG Home</a>
-            <a href="/seminars.html">Seminars</a>
-            <a href="/news.html">News</a>
+            <a href="{{ SITE_ROOT_PATH }}/">SRG Home</a>
+            <a href="{{ SITE_ROOT_PATH }}/seminars.html">Seminars</a>
+            <a href="{{ SITE_ROOT_PATH }}/news.html">News</a>
         </nav>
     </main>
 </body>

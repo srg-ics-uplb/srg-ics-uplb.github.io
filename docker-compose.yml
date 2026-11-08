@@ -1,0 +1,12 @@
+# Runs the SRG site container for the ICS server. The host's nginx proxies
+# https://research.ics.uplb.edu.ph/labs/srg/home/ to 127.0.0.1:8080 (see README.md).
+services:
+  srg-site:
+    build:
+      context: .
+      args:
+        SRG_BASE_PATH: /labs/srg/home
+    image: srg-site:latest
+    ports:
+      - "127.0.0.1:8080:80"   # only reachable from the host itself
+    restart: unless-stopped

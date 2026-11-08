@@ -54,6 +54,46 @@ python3 -m venv .venv
 `.github/workflows/pelican.yml` builds with `publishconf.py` and deploys to GitHub Pages on every push to
 `master`, once the repository's Pages source is set to **GitHub Actions**.
 
+## Deploying to the ICS server (mirror)
+
+The site is also served at https://research.ics.uplb.edu.ph/labs/srg/home/ from a Docker container, with the
+server's own nginx as the reverse proxy. GitHub Pages stays the primary address: the mirror's canonical
+links point to https://srg-ics-uplb.github.io, so search engines don't index two copies.
+
+The image builds the site with `publishconf_ics.py` (relative links) and serves it with nginx under
+`/labs/srg/home/`, on `127.0.0.1:8080`.
+
+**First time, on the server:**
+
+```sh
+git clone https://github.com/srg-ics-uplb/srg-ics-uplb.github.io.git srg-site
+cd srg-site
+docker compose up -d --build
+```
+
+**Host nginx:** add this inside the existing `server { … }` block for research.ics.uplb.edu.ph, then
+`sudo nginx -t && sudo systemctl reload nginx`:
+
+```nginx
+location = /labs/srg/home { return 301 /labs/srg/home/; }
+location /labs/srg/home/ {
+    proxy_pass http://127.0.0.1:8080;   # no URI after the port: /labs/srg/home/... is passed through unchanged
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+**Updating** after changes are pushed to GitHub:
+
+```sh
+cd srg-site && git pull && docker compose up -d --build
+```
+
+**A different path** (e.g. `/srg`): change `SRG_BASE_PATH` in `docker-compose.yml`, rebuild, and change both
+`location` lines in the host nginx to match.
+
 ## Layout
 
 - `theme/srg/templates/`: page templates. `base.html` is the shared `<head>`; `_macros.html` holds the

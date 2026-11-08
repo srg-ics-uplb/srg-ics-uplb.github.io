@@ -1,0 +1,36 @@
+# nginx inside the container. __BASE__ is replaced with SRG_BASE_PATH (default /labs/srg/home) at build time.
+server {
+    listen 80;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # Behind the host's reverse proxy: keep redirects relative, so they don't
+    # point at this container's own host name or port.
+    absolute_redirect off;
+
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json application/xml image/svg+xml;
+    gzip_min_length 1024;
+
+    location = / {
+        return 302 __BASE__/;
+    }
+
+    location = __BASE__ {
+        return 301 __BASE__/;
+    }
+
+    location __BASE__/ {
+        try_files $uri $uri/ =404;
+    }
+
+    # Static assets change rarely; pages are always revalidated.
+    location ~ ^__BASE__/(theme|images|logos)/ {
+        expires 7d;
+        add_header Cache-Control "public";
+    }
+
+    error_page 404 __BASE__/404.html;
+}

@@ -15,6 +15,9 @@ SITEURL = ""
 # Absolute address of the live site, used for canonical/Open Graph tags.
 SITE_ABS_URL = "https://srg-ics-uplb.github.io"
 CONTACT_EMAIL = "jchermocilla@up.edu.ph"
+# Root-absolute path prefix, used only where relative links are impossible (the 404 page,
+# which is served at any depth). "" on GitHub Pages; "/labs/srg/home" on the ICS mirror.
+SITE_ROOT_PATH = ""
 CURRENT_YEAR = datetime.date.today().year
 
 PATH = "content"
