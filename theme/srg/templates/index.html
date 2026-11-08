@@ -125,8 +125,11 @@
 {% for pub in SRG.publications['items'] %}
         <div class="publication-item">
             <div class="publication-title">{{ pub.title }}</div>
-            <div class="publication-authors">{{ pub.authors }}</div>
-            <div class="publication-venue">{{ pub.venue }}</div>
+            <div class="publication-meta">
+                <span class="publication-authors">{{ pub.authors }}</span>
+                <span class="publication-sep">·</span>
+                <span class="publication-venue">{{ pub.venue }}</span>
+            </div>
         </div>
 {% endfor %}
         <div style="text-align: center; margin-top: 30px;">
